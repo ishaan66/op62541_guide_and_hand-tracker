@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="Glossary"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-D8AB8963-6DF5-4780-A262-4104895F4D93"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Glossary</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-D8AB8963-6DF5-4780-A262-4104895F4D93">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Glossary</h1>
+<div><p>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-446CAC6C-BED2-42B3-8944-77DFA7BCCE6C" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="17.421602787456443%" id="d39841e16"> Term 
+            </th>
+<th class="cellrowborder" valign="top" width="82.57839721254355%" id="d39841e18"> Definition 
+            </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> Best Master Clock Algorithm 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> A key to the resiliency of the Precision Time Protocol (PTP) is the BMCA. A new grandmaster clock is selected automatically when the previous grandmaster gets disconnected from the network. The selection criteria of the Best Master Clock (BMC), in order of precedence, is listed below: 
+              <ol id="GUID-52C6F7FC-C6F8-459D-8F9B-79586EFC975A"><li> Priority1: This is an integer from the range of 0 to 255. The smallest number wins. For slave only devices, this is set to 255. 
+                </li>
+<li> Clock class: This denotes the traceability of the synchronous time distributed by a ClockMaster when it is grandmaster. 
+                </li>
+<li> Clock accuracy: This is an enumerated list of ranges of time accuracy. 
+                </li>
+<li> Offset scaled log variance: This field characterizes the precision and frequency stability of the ClockMaster. 
+                </li>
+<li> Priority2: This field, together with the Priority1 field, is a user settable field. This allows system integrators to identify primary and backup clocks among identical redundant grandmasters. 
+                </li>
+<li> Clock identity: This is usually set to the Ethernet MAC address. 
+                </li>
+</ol>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> Clock Synchronization 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> No two oscillators can run at the same frequency precisely. As a result, the clocks tend to drift away from each other after running for some time. Clock synchronization is a general term that includes syntonization and synchronization. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> gPTP Daemon 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> OpenAvnu provides an example implementation of Precision Time Protocol (gPTP) daemon, called daemon_cl, to establish high accuracy clock synchronization among network nodes via IEEE standard 802.1AS-2011, also known as generalized gPTP. 
+              <p>The daemon also implements Best Master Clock Algorithm (BMCA), which allows the clocks to automatically select the best master clock among them. Network interface (for example, eth0) is the only required parameter to daemon_cl. Other useful parameters are -S and -R. -S performs clock syntonization, besides time synchronization. -R is used to change the priority1 value and can be used to set the endpoint as grandmaster by setting a lower value. 
+              </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> Iproute2 TC 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> TC is utility/command used to configure Traffic Control in the Linux kernel. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 ">Open Platform Communications Unified Architecture (OPC UA) 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 ">OPC UA provides an extensible framework for a machine-to-machine communication protocol for industrial automation with an extensible framework that is open, cross-platform, cross-operating system and based on a service-oriented architecture. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 ">Preempt RT 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "><p>The real-time (also known as PREEMPT_RT) patch for making Linux into a true realtime operating system (RTOS). 
+              </p>
+<p>It was first introduced in 2004, and since then multiple attempts have been made to fully integrate PREEMPT_RT patch into Linux mainline. 
+              </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> ptp4l Daemon 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> Another commonly used PTP daemon is ptp4l from The Linux PTP Project, which implements PTP according to IEEE standard 1588 for Linux. Same as gPTP daemon, the -i switch together with the network interface (for example, eth0) is the only required parameter to ptp4l. Other useful parameters are -f to select configuration file, -m to print messages on the display and -s to select slave-only mode. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 ">qdiscs 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> Queueing discipline, or qdisc, is used when the kernel needs to send a packet to an interface. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> Synchronization 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> Synchronization is generally referred to time synchronization. Two clocks are said to be synchronized when they both agree precisely on the time of the day. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 "> Syntonization 
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> Syntonization is also known as frequency synchronization. Two clocks are said to be syntonized when the measured time passing between them is precisely at the same frequency. 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="17.421602787456443%" headers="d39841e16 ">Time slice (or quantum)
+            </td>
+<td class="cellrowborder" valign="top" width="82.57839721254355%" headers="d39841e18 "> In a general purpose operating system (GPOS), round-robin (RR) time-sharing process scheduling allows each process to use the processor for a short period of processing time, known as a time slice or quantum.
+            </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div/>
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="IEEE 802.1Qbv Step 3: Pick the Scenario to Run"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-E153055C-9DF8-4695-A1E8-89B409FB04D6"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>IEEE 802.1Qbv Step 3: Pick the Scenario to Run</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-E153055C-9DF8-4695-A1E8-89B409FB04D6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">IEEE 802.1Qbv Step 3: Pick the Scenario to Run</h1>
+<div><div class="Note"><h3 class="NoteTipHead">Note</h3> To ensure the hardware is configured correctly, run the steps in 
+      <a href="GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079.html">CPU Clock Optimization</a>. 
+    </div>
+<p> The IEEE 802.1 Qbv demo includes the following scenarios. These scenarios build successively on the previous to demonstrate the effects of running Qbv. 
+    </p>
+<p> Run the three scenarios to compare the corresponding results. Each scenario is complete and independent of the other scenario. The objective of each of the scenarios is to transmit packets periodically with an inter-packet latency of 500 µs. 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3A084E9F-B897-41D5-B8A0-8EF55525FFE9" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d40255e28">Demo 3 Scenarios 
+            </th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d40255e30">Time-Aware Shaper Enabled 
+            </th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d40255e32">LaunchTime Enabled 
+            </th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d40255e34">Has Scripts 
+            </th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d40255e36">Description 
+            </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A.html#GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A">IEEE 802.1Qbv Demo 3 Scenario 1: Without Time-Aware Traffic Scheduling or LaunchTime</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Baseline poor latency with standard Ethernet 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE.html">IEEE 802.1Qbv Demo 3 Scenario 2 Time-Aware Traffic Scheduling Enabled</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Enables 802.1Qbv time-aware shaper for better latency (compared to 
+              <a href="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A.html">Scenario 1</a>) 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57.html">IEEE 802.1Qbv Demo 3 Scenario 3 Time-Aware Traffic Scheduling and LaunchTime Enabled</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Enables 802.1Qbv time-aware shaper for even better latency (compared to 
+              <a href="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A.html">Scenario 1</a> and 
+              <a href="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE.html">Scenario 2</a>) 
+            </td>
+</tr>
+<tr><td class="cellrowborder" colspan="5" valign="top" headers="d40255e28 d40255e30 d40255e32 d40255e34 d40255e36 "><a href="GUID-B5D44613-1655-41FE-9331-9CC08A5C1C6B.html">IEEE 802.1 Qbv Next Steps</a></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-92363A16-023C-4D39-97A4-99CEA360FBF2.html">IEEE 802.1Qbv Demo 3 Scenario 3.1 Tighter Inter-Packet Latency with Time-Aware Traffic Scheduling and LaunchTime Enabled</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Same as 
+              <a href="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57.html">Scenario 3</a> and uses the Linux Preempt RT kernel patch for additional latency improvements (compared to 
+              <a href="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57.html">Scenario 3</a>) 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-67569415-310B-4C8A-8120-FCB7A8A005E0.html">IEEE 802.1Qbv Demo 3 Scenario 3.2 OPC UA PubSub over TSN With Time-Aware Scheduling and LaunchTime Enabled</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Same as 
+              <a href="GUID-92363A16-023C-4D39-97A4-99CEA360FBF2.html">Scenario 3.1</a> and integrates the OPC UA Publish/Subscribe model 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-8F9E481F-151B-4CC8-A358-CD895E33644A.html">IEEE 802.1Qbv Demo 3 Scenario 1.1 No Time-Aware Traffic Scheduling (No Scripts)</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Same as 
+              <a href="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A.html">Scenario 1</a>, with all command line steps done manually 
+            </td>
+</tr>
+<tr class="color(#FF0000)"><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-94346748-C062-462E-8354-31EC73053154.html">IEEE 802.1Qbv Demo 3 Scenario 2.1 with Time-Aware Traffic Scheduling Enabled (No Scripts)</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Same as 
+              <a href="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE.html">Scenario 2</a> with all command line steps done manually 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d40255e28 "><a href="GUID-79D33FC5-0B6E-4E84-AD91-6237BA1EBC3A.html">IEEE 802.1Qbv Demo 3 Scenario 3.3: Time-Aware Traffic Scheduling and LaunchTime Enabled (No Scripts)</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e30 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e32 "><strong><span class="color(#00CC00)" style="color:#00CC00">Yes</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e34 "><strong><span class="color(#FF0000)" style="color:#FF0000">No</span></strong></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d40255e36 ">Same as 
+              <a href="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57.html">Scenario 3</a> with all command line steps done manually 
+            </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<br/><img src="GUID-1D03EF39-4559-4A60-B83C-2B2865F399E0-low.png" width="830"/><br/><p>Next: 
+      <a href="GUID-B5D44613-1655-41FE-9331-9CC08A5C1C6B.html">IEEE 802.1 Qbv Next Steps</a></p>
+</div>
+<div/>
+</body>
+</html>

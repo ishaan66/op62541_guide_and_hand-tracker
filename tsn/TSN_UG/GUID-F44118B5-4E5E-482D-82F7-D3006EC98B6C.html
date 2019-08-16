@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="Time Synchronization Demo: Analyze the 1PPS Streams using an Oscilloscope"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-32F76F7A-11E0-4202-891B-4D038FA44975.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-F44118B5-4E5E-482D-82F7-D3006EC98B6C"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Time Synchronization Demo: Analyze the 1PPS Streams using an Oscilloscope</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-F44118B5-4E5E-482D-82F7-D3006EC98B6C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Time Synchronization Demo: Analyze the 1PPS Streams using an Oscilloscope</h1>
+<div><div class="section" id="GUID-AAD8416F-2225-4386-A20E-F35B5CECFD0E"><div class="Note"><h3 class="NoteTipHead">Note</h3> Restart your system before running the following steps. 
+      </div>
+<p>As an optional exercise, after running the time synchronization demo, you can use an oscilloscope to analyze the 1PPS streams generated from SDP0 of both boards. This allows you to further analyze the relative time difference between two 1PPS streams from both boards. This information can be used to cross-verify the accuracy of the result previously obtained. 
+      </p>
+<p>The following table lists the prerequisites for time synchronization using an oscilloscope. 
+      </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6165D812-361D-4BB9-BA67-81C79EDA6DBD" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="12.239902080783354%" id="d44092e22"> Units Needed 
+              </th>
+<th class="cellrowborder" valign="top" width="87.76009791921665%" id="d44092e24"> Hardware/Equipment Specifications 
+              </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="12.239902080783354%" headers="d44092e22 "> 2 
+              </td>
+<td class="cellrowborder" valign="top" width="87.76009791921665%" headers="d44092e24 "><a href="https://ark.intel.com/products/codename/80644/Apollo-Lake#@embedded" target="_blank">Apollo Lake-I</a>-based Platforms, such as Leaf Hill CRB board 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="12.239902080783354%" headers="d44092e22 "> 2 
+              </td>
+<td class="cellrowborder" valign="top" width="87.76009791921665%" headers="d44092e24 "><a href="https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/i210-ethernet-controller-datasheet.pdf" target="_blank">Intel<sup>&reg;</sup> Ethernet Controller I210</a></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="12.239902080783354%" headers="d44092e22 "> 1 
+              </td>
+<td class="cellrowborder" valign="top" width="87.76009791921665%" headers="d44092e24 "> CAT-5E Ethernet Cable 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="12.239902080783354%" headers="d44092e22 "> 3 
+              </td>
+<td class="cellrowborder" valign="top" width="87.76009791921665%" headers="d44092e24 "> Jumper wire 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="12.239902080783354%" headers="d44092e22 "> 1 
+              </td>
+<td class="cellrowborder" valign="top" width="87.76009791921665%" headers="d44092e24 "> Oscilloscope with at least two input sockets 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="12.239902080783354%" headers="d44092e22 "> 2 
+              </td>
+<td class="cellrowborder" valign="top" width="87.76009791921665%" headers="d44092e24 "> Oscilloscope Probe 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3>  For information on using other platforms and boards, refer to the 
+          <a href="GUID-CE967E11-F4FD-44F9-B69E-692E0A1B20E0.html#GUID-552AACA0-F95C-4ADB-89B4-D74F4712F6EA">Validated Configurations</a> section. 
+        </div>
+</p>
+<p>To set up the hardware with an oscilloscope, follow these steps: 
+      </p>
+<ol id="GUID-E9BF46AE-02A9-416F-93A1-6CA2A0B5245F"><li> Connect one end of the CAT-5E Ethernet cable to the RJ45 connector of 
+          <strong>Board A.</strong> Connect the other end of the cable to the RJ45 connector of 
+          <strong>Board B</strong> as shown. 
+        </li>
+<li>Connect the SDP0 and SDP1 of 
+          <strong>Board A</strong> with a jumper wire. 
+        </li>
+<li>Connect the SDP0 of 
+          <strong>Board A</strong> to the SDP1 of 
+          <strong>Board B</strong> with a second jumper wire. 
+        </li>
+<li>Connect the SDP0 of 
+          <strong>Board B</strong> with a third jumper wire. 
+        </li>
+<li>Connect the oscilloscope probe from channel-1 of the oscilloscope to the SDP0 of 
+          <strong>Board A</strong>. 
+        </li>
+<li>Connect the oscilloscope probe from channel-2 of the oscilloscope to jumper wire connected to SDP0 of 
+          <strong>Board B</strong>. 
+        </li>
+<li>Power on both 
+          <strong>Board A</strong> and 
+          <strong>Board B</strong>. 
+        </li>
+<li>Power on the oscilloscope. 
+        </li>
+</ol>
+<div class="fignone" id="GUID-E220A9ED-3830-46DD-980A-1B7E48F39194"><span class="figcap"> Time Synchronization Setup (with Oscilloscope)</span><br/><img src="GUID-C07B6D68-C6C8-4719-9618-1F9AED36387F-low.png" width="1000"/><br/></div>
+<p>Refer to your oscilloscope's manual to adjust the 1PPS streams to measure the time difference between them. 
+      </p>
+<p>To analyze the 1PPS streams: 
+      </p>
+<ol id="GUID-34E0EF88-C7E1-49BE-B562-FEFEB9F3087A"><li>Use the oscilloscope controls to adjust the vertical position of the two 1PPS signals from Board A and Board B to overlap each other. 
+          <p/>
+</li>
+<li> Measure the time difference between the two raised edges of the 1PPS signals and cross-check with the T<sub>error</sub> displayed from 
+          <samp class="codeph">sample-app-1.</samp><p/>
+</li>
+</ol>
+<p> Optionally, you can also use ptp4l (PTP daemon from linuxptp project) for the time synchronization error measurement. The ptp4l daemon supports both IEEE 1588 and IEEE 802.1AS. 
+      </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4AA86425-C77A-464C-A00D-D76EC2DB748A" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="11.48105625717566%" id="d44092e150"> </th>
+<th class="cellrowborder" valign="top" width="40.068886337543056%" id="d44092e151"> Board A 
+              </th>
+<th class="cellrowborder" valign="top" width="48.45005740528128%" id="d44092e153"> Board B 
+              </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="11.48105625717566%" headers="d44092e150 "> IEEE 1588 
+              </td>
+<td class="cellrowborder" valign="top" width="40.068886337543056%" headers="d44092e151 "><samp class="codeph"> $ ptp4l -i 
+                  <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -A -m</samp></td>
+<td class="cellrowborder" valign="top" width="48.45005740528128%" headers="d44092e153 "><samp class="codeph"> $ ptp4l -i 
+                  <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -A -m -s 
+                </samp></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="11.48105625717566%" headers="d44092e150 "> IEEE 802.1AS 
+              </td>
+<td class="cellrowborder" valign="top" width="40.068886337543056%" headers="d44092e151 "><samp class="codeph">$ ptp4l -i 
+                  <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -A -2 -m</samp></td>
+<td class="cellrowborder" valign="top" width="48.45005740528128%" headers="d44092e153 "><samp class="codeph"> $ ptp4l -i 
+                  <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -A -2 -m -s -f 
+                </samp></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Where 
+      </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E2894199-F409-47EB-A872-C9C44FFD8528" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d44092e198"> Argument 
+              </th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d44092e200"> Description 
+              </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="NaN%" headers="d44092e198 "><samp class="codeph">-A 
+                </samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d44092e200 "> Select the delay mechanism automatically. Start with end-to-end (E2E) and switch to peer-to-peer (P2P) when a peer delay request is received 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d44092e198 "><samp class="codeph">-m</samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d44092e200 "> Print messages to standard output 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d44092e198 "><samp class="codeph"> -s 
+                </samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d44092e200 "> Enable the slave only mode 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> The 
+        <samp class="codeph">configs/gPTP.cfg</samp> file is located in the linuxptp project. Follow the steps in 
+        <a href="http://linuxptp.sourceforge.net/" target="_blank">http://linuxptp.sourceforge.net/</a> to download the source code. 
+      </div>
+<div class="fignone" id="GUID-65E3745F-2EFB-4447-A318-712A08213CDB"><span class="figcap">Time Synchronization Error Plot for ptp4l (IEEE802.1AS)</span><br/><img src="GUID-4A6CEBEC-AA20-470A-8C7F-6354CDD12B34-low.png" width="1000"/><br/><p/>
+</div>
+<p>Next: 
+        <a href="GUID-5CE351F3-B150-45A2-9E9F-4F76DC77AD12.html">IEEE 802.1Qav Troubleshooting</a></p>
+</div>
+</div>
+<div/>
+</body>
+</html>

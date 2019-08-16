@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="IEEE 802.1Qbv Demo Step 1: Set up the Hardware"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-ADB20930-F8A4-45FE-B810-34BFD7B17B92"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>IEEE 802.1Qbv Demo Step 1: Set up the Hardware</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-ADB20930-F8A4-45FE-B810-34BFD7B17B92">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1"> IEEE 802.1Qbv Demo Step 1: Set up the Hardware</h1>
+<div><p>You can run this demo with or without an IEEE802.1Qbv capable switch. The switch is required to connect other Ethernet-capable devices to the same network. Depending on your environment, select Option 1 (without a switch) or Option 2 (with a switch) to run the demo. 
+    </p>
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3> While setting up the demo, consider performing 
+        <a href="GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079.html">CPU Clock Optimization</a>, if appropriate for your environment. 
+      </div>
+</p>
+<div class="section" id="GUID-0F4D970B-797D-4647-9F5F-DCB27A48EDE7"><h2 class="sectiontitle">Option 1: Direct Connection without a Switch</h2>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1C3CE7E8-8CAC-4ECB-AC02-3E06CD694C11" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d36086e27">Units needed 
+              </th>
+<th class="cellrowborder" valign="top" id="d36086e29">Equipment Specifications 
+              </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d36086e27 ">2 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e29 "><a href="https://ark.intel.com/products/codename/80644/Apollo-Lake?q=Apollo%20Lake#@embedded" target="_blank">Apollo Lake-I</a>-based platforms, such as Leaf Hill CRB board 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d36086e27 ">2 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e29 "><a href="https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/i210-ethernet-controller-datasheet.pdf" target="_blank">Intel Ethernet Controllers I210 
+                </a></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d36086e27 ">1 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e29 ">CAT-5E Ethernet Cable 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>  For information on using other processors or boards, refer to the 
+        <a href="GUID-CE967E11-F4FD-44F9-B69E-692E0A1B20E0.html#GUID-552AACA0-F95C-4ADB-89B4-D74F4712F6EA">Validated Configurations</a>. 
+      </div>
+<p>The figure below shows the hardware set up for the demo without a switch. Each Apollo Lake-I-based platform contains an Intel Ethernet Controller I210. For the purpose of this demo, assign these two platforms as: 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5FCC7867-17E9-4E88-9E2A-38F5F6D8ADD8" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top"><strong>Board A</strong></td>
+<td class="cellrowborder" valign="top">The platform on which the PTP clock of the Intel Ethernet Controller I210 acts as the grandmaster clock. 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top"><strong>Board B</strong></td>
+<td class="cellrowborder" valign="top">The platform on which the PTP clock of the Intel Ethernet Controller I210 acts as the slave clock. 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><div class="fignone" id="GUID-B75F980C-A7B0-47F1-9A08-11D1CB437359"><span class="figcap"> IEEE 802.1Qbv Demo Setup without a Switch (Option 1)</span><br/><img src="GUID-3235120B-D7B8-4498-A97A-6AEDBB3CA049-low.png" width="930"/><br/></div>
+</p>
+<p> To set up the demo using Option 1, follow these steps: 
+      </p>
+<ol id="GUID-F8BF960C-B31A-4D18-903A-1DAC4493E66B"><li> Connect one end of a CAT-5E Ethernet cable to the RJ45 connector of 
+          <strong>Board A</strong>. 
+        </li>
+<li><p> Connect the other end of the cable to the RJ45 connector of 
+            <strong>Board B</strong> as shown in 
+            <a href="#GUID-B75F980C-A7B0-47F1-9A08-11D1CB437359">Figure 1</a>. 
+          </p>
+</li>
+<li> Power on the two boards. 
+        </li>
+</ol>
+</div>
+<div class="section" id="GUID-FC8ECB67-EB87-40CB-A987-E7A04B7B04D9"><h2 class="sectiontitle">Option 2: Connection with a Switch</h2>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-30AB1C77-1606-4886-8E2F-415DD80158B3" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d36086e111">Units needed 
+              </th>
+<th class="cellrowborder" valign="top" id="d36086e113">Equipment Specifications 
+              </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d36086e111 ">2 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e113 "><a href="https://ark.intel.com/products/codename/80644/Apollo-Lake?q=Apollo%20Lake#@embedded" target="_blank">Apollo Lake-I</a>-based platforms, such as Leaf Hill CRB board 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d36086e111 ">2 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e113 "><a href="https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/i210-ethernet-controller-datasheet.pdf" target="_blank">Intel Ethernet Controllers I210 
+                </a></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d36086e111 ">2 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e113 ">CAT-5E Ethernet Cable 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d36086e111 ">1 
+              </td>
+<td class="cellrowborder" valign="top" headers="d36086e113 "> IEEE802.1Qbv capable switch with (2) RJ45 ports available 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>  For information on using other processors or boards, refer to 
+        <a href="GUID-CE967E11-F4FD-44F9-B69E-692E0A1B20E0.html#GUID-552AACA0-F95C-4ADB-89B4-D74F4712F6EA">Validated Configurations</a>. 
+      </div>
+<p>The figure below shows the hardware set up for the demo using a connection with a switch. 
+      </p>
+<p> For the purpose of this demo, assign these two platforms as: 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1CA8EFF3-DC4D-4460-BDF4-DCEBBBFE9FCF" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top"><strong>Board A</strong></td>
+<td class="cellrowborder" valign="top">The platform on which the PTP clock of the Intel Ethernet Controller I210 acts as the grandmaster clock. 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top"><strong>Board B</strong></td>
+<td class="cellrowborder" valign="top">The platform on which the PTP clock of the Intel Ethernet Controller I210 acts as the slave clock. 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<div class="fignone" id="GUID-ACCA35E7-9E1F-40F1-BF5C-5CB5F9D8200A"><span class="figcap"> IEEE 802.1Qbv Demo Setup with Switch (Option 2)</span><br/><img src="GUID-4ECF7855-88D6-4198-AD91-99931D3C5FD5-low.png" width="930"/><br/></div>
+<p> To set up the demo using Option 2, follow these steps: 
+      </p>
+<ol id="GUID-D3F9DA79-9A6C-4BFE-A8CE-AFBB05B346A8"><li> Connect one end of a CAT-5E Ethernet cable to the RJ45 Port of 
+          <strong>Board A</strong>. 
+        </li>
+<li> Connect the other end of the cable to the RJ45 Port of the IEEE 802.1Qbv-capable switch. 
+        </li>
+<li> Connect one end of the second CAT-5E Ethernet cable to 
+          <strong>Board B</strong>. 
+        </li>
+<li> Connect the other end of the cable to the RJ45 Port of the IEEE 802.1Qbv-capable switch. 
+        </li>
+<li> Power on the two boards and the switch. 
+        </li>
+<li> Configure the IEEE 802.1Qbv-capable switch as described below. 
+        </li>
+</ol>
+<p><strong>IEEE 802.1Qbv-capable Switch Configuration (Option 2 Only)</strong></p>
+<p> To ensure end-to-end transmission latency for scheduled traffic is well protected, set the IEEE 802.1Qbv-capable switch using the same transmission schedule used in Board A. 
+      </p>
+<div class="fignone" id="GUID-2764E602-DAAE-4C20-A722-CBC2F040A97F"><span class="figcap"> Transmission Schedule Used by Board A for IEEE 802.1Qbv Demo</span><br/><img src="GUID-F00D05EC-2F2F-41E5-88D7-EA4AABE16799-low.png" width="1000"/><br/></div>
+<p>Based on the transmission schedule above, use the software interface provided by the chosen IEEE 802.1Qbv switch to program the GCL of the egress port as shown below. The cycle time is 1ms for this demo. The base time needs to be aligned with base time used in Board A. In this case, configure it by using the base time (stored in the base_time file) that is generated from the sample-app-taprio. 
+      </p>
+<p> The transmission gate open and close time is 
+        <u>relative to base time</u>. 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7593FFAB-E8F9-4E77-9C72-CD001C650AFE" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="NaN%"># Open Tx Gate 0: [+0.1ms to +0.2ms] and [+0.6ms to +0.7ms] 
+                <p># Open Tx Gate 1: [+0.2ms to +0.3ms] and [+0.7ms to +0.8ms] 
+                </p>
+<p> # Open Tx Gate 2: [+0.3ms to +0.5ms] and [+0.8ms to +1.0ms] 
+                </p>
+<p> # Open Tx Gate 3: [+0.0ms to +0.1ms] and [+0.5ms to +0.6ms] 
+                </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p> To ease the programming of above transmission schedule, the GCL programming sequence based on the definition in IEEE 802.1Qbv is: 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BE758B0F-A64F-4EAC-9274-8B0A5E86125E" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="NaN%"># SetGates 0x8 100000 
+                <p># SetGates 0x1 100000 
+                </p>
+<p># SetGates 0x2 100000 
+                </p>
+<p># SetGates 0x4 200000 
+                </p>
+<p># SetGates 0x8 100000 
+                </p>
+<p># SetGates 0x1 100000 
+                </p>
+<p># SetGates 0x2 100000 
+                </p>
+<p> # SetGates 0x4 200000 
+                </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p>Next: 
+        <a href="GUID-3F9C762E-D716-4D7E-BA1C-A915E5A6BA61.html">IEEE 802.1Qbv Demo Step 2: Build Software</a></p>
+</div>
+</div>
+<div/>
+</body>
+</html>

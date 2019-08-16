@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="IEEE 802.1Qbv"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>IEEE 802.1Qbv</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">IEEE 802.1Qbv</h1>
+<div><p>Periodic control applications in automotive and industrial networks require much lower and bounded latencies compared to AV applications. In IEEE 802.1Qbv terminology, this type of traffic pattern is known as 
+      <em>scheduled traffic</em>. In contrast, conventional best-effort Ethernet networking does not guarantee low transmission latency and timely delivery. Other interfering traffic can affect critical control data used in industrial automation (TSN traffic). Since control data is usually short in frame length and periodically, the bandwidth used by control data is low. Therefore, it is possible to share the same medium with other traffic in the same network for better bandwidth utilization. 
+    </p>
+<p>To identify and segregate different types of Ethernet traffic, IEEE 802.1Q introduces VLAN header (contains VLAN ID and VLAN priority) to mark different types of Ethernet frames. By using VLAN priority, Ethernet frames can be queued into different transmit queues, known also traffic class transmit queues. As a technology extension to IEEE 802.1Q, IEEE 802.1Qbv describes Time Aware Shaper (TAS) which has time-controlled transmission gates, which are associated with the above-mentioned traffic class transmit queues. TAS uses time from the PTP clock in Ethernet MAC controller. As a result, we use time synchronization technology (IEEE 1588 or IEEE 802.1AS) to synchronize PTP clocks in all networked appliances across the network. In addition to time synchronization, it is important to make sure all the network appliances have a well-coordinated TAS transmission schedule so that end-to-end scheduled traffic transmission achieves a very small and tightly bounded transmission latency. 
+    </p>
+<p> The figure below shows the components in IEEE 802.1Qbv TAS (marked in blue). 
+    </p>
+<p>The transmission schedule (also known as transmission windows) is programmed by using a gate control list (GCL). The GCL is a list of gate control entries (gate command, gate open/close state, interval in nanosecond). The open/close state of the gate is coded in bits: 1 means open and 0 means closed. For example, a value of 0x35 (0011 0101) means TxQ0, TxQ2, TxQ4 &amp; TxQ5 are open. As defined in IEEE 802.1Qbv, there is only one gate command, which is 
+      <em>SetGates</em>. The execution of the GCL starts at base time, repeats itself after a duration of cycle time has lapsed. The cycle extension time is useful to ensure a smooth transition from the old GCL to the new GCL. 
+    </p>
+<p> By programming the TAS GCL and setting its associated time-related parameters, we define transmission windows for various types of Ethernet traffic. Taking scheduled traffic (VLAN priority = 7) as an example, Ethernet frames for scheduled traffic are expected to be transmitted within the two green transmission windows: 
+    </p>
+<ul id="GUID-0266B885-D162-4F7F-B419-CD1A3DC34CB5"><li>(Base Time + N x Cycle Time +0.1) ms to (Base Time + N x Cycle Time +0.2) ms 
+      </li>
+<li>(Base Time + N x Cycle Time +0.6) ms to (Base Time + N x Cycle Time +0.7) ms 
+      </li>
+</ul>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> The transmission windows for other scheduled traffic (VLAN priority = 5), marked as blue, PTP frames (marked as red) and best effort traffic (marked as gray) are closed when the transmission window of scheduled traffic (VLAN priority = 7) is open. As a result, the transmission window for the scheduled traffic is protected. 
+    </div>
+<div class="fignone" id="GUID-F61F2BDF-E50A-4238-8E65-F2A389CEB678"><span class="figcap"> Time Aware Shaper (in IEEE 802.1Qbv)</span><br/><img src="GUID-68AFAEFF-B458-4A7B-AFD6-08898CB581DA-low.png" width="1000"/><br/></div>
+<p>One important characteristic of TAS is that a frame is not selected for transmission unless adequate transmission gate open time is available to ensure an entire frame is transmitted. As a result, network administrators do not need to set up guard bands in the transmission schedule to prevent interfering frames from further delaying the transmission of scheduled traffic. Use of guard bands was a common technique before TAS since network transmission is not allowed within the guard band. With TAS, setting up a guard band is no longer needed as there is no unnecessary loss of network bandwidth. 
+      <div class="fignone" id="GUID-E7BFA65F-AA43-47BB-9843-967C42140BD4"><span class="figcap">Sample TAS Transmit Schedule</span><br/><img src="GUID-9DED3CD2-450F-48F6-9493-DCCFB75B6D49-low.png" width="1000"/><br/></div>
+</p>
+<div class="section" id="GUID-2467427B-2AB1-45B8-A407-3E553A0A8617"><h2 class="sectiontitle"> Demo 3: IEEE 802.1Qbv Time Aware Shaper</h2><div class="fignone" id="GUID-AF6BFAEA-1C15-4ED2-953D-7511327EB8DB"><span class="figcap"> Demo 3: IEEE 802.1Qbv Time Aware Shaper Software Components</span></div>
+<p><br/><img src="GUID-211B6A7B-7630-4EFF-B585-CD7629BCFEC2-low.png" width="830"/><br/></p>
+<p><strong>Board A</strong> and 
+        <strong>Board B</strong> run the following common software components: 
+      </p>
+<ul id="GUID-2583AFAB-F601-4683-8457-615E8F699D10"><li><samp class="codeph">ptp4l</samp>: A user-space daemon that supports time synchronization based on IEEE 802.1AS Generalized Precision Time Protocol (gPTP). 
+          <ul id="GUID-B0C81B73-AEF3-4EF7-8605-0673036CDE14"><li>In 
+              <strong>Board A</strong>, 
+              <samp class="codeph">ptp4l</samp> runs in grandmaster clock mode. 
+            </li>
+<li>In 
+              <strong>Board B</strong>, 
+              <samp class="codeph">ptp4l</samp> runs in slave clock mode. 
+            </li>
+</ul>
+</li>
+<li><samp class="codeph">phc2sys</samp>: A user-space program that is used to synchronize system clock (of processor) to PTP clock (of Ethernet controller). 
+        </li>
+<li><samp class="codeph">iperf3</samp>: A user-space utility common used for performing network throughput benchmarking. In this demo, we use the utility as best effort traffic generator. The utility always works in pair: client mode in 
+          <strong>Board A</strong> and server mode in 
+          <strong>Board B</strong>. 
+        </li>
+<li><samp class="codeph">igb</samp> driver: A Linux kernel Ethernet driver for the Intel Ethernet Controller I210 that supports (1) PTP clock, (2) LaunchTime technology. LaunchTime functionality is related to time deterministic frame transmission and it is driven by 
+          <samp class="codeph">taprio</samp> qdisc within Linux networking stack. 
+        </li>
+<li><samp class="codeph">sample-app-taprio</samp>: 
+          <ul id="GUID-D7647509-796E-4746-B8C4-3501D49735B5"><li>For 
+              <strong>Board A</strong>, it is a sample application that generates scheduled traffic. 
+            </li>
+<li>For 
+              <strong>Board B</strong>, it is a sample application that received scheduled traffic. In addition, the application uses 
+              <samp class="codeph">ethtool</samp> to set up Rx frame steering by using the Rx filter mechanism in the igb driver. 
+            </li>
+</ul>
+</li>
+</ul>
+<p>The software component that runs on 
+        <strong>Board A</strong> only is: 
+      </p>
+<ul id="GUID-35B9AEEF-9366-4FBF-A7B1-995DB6326DDA"><li><samp class="codeph">scheduler.py</samp>: The application reads (1) the 
+          <samp class="codeph">queue.cfg</samp> file for VLAN priority to TxQ mapping and (2) the 
+          <samp class="codeph">gates.sched</samp> file for the gate control list and uses the 
+          <samp class="codeph">tc</samp> utility to set up 
+          <samp class="codeph">taprio</samp> qdisc or 
+          <samp class="codeph">mqprio</samp> qdisc capabilities in the Linux networking stack. For details about the qdisc, refer to 
+          <a href="GUID-A5F50450-D74B-41BC-8023-9CFD043CDF15.html">Queue Disciplines</a>. 
+        </li>
+</ul>
+<p>The software components that run on 
+        <strong>Board B</strong> only are: 
+      </p>
+<ul id="GUID-7AF867FF-2C41-409E-90E1-8D713462DF54"><li><samp class="codeph">plot.sh</samp>: A Bash script that sets up the gnuplot to display the latency of scheduled traffic. 
+        </li>
+<li><samp class="codeph">plot-distribution.sh</samp>: A Bash script that sets up the gnuplot to display the inter-packet latency of scheduled traffic. 
+        </li>
+</ul>
+</div>
+<div class="section" id="GUID-37A7AA7C-B7AA-4708-A0CD-0E8C2C9412EF"><h2 class="sectiontitle"> Transmit Window Configuration for Time-Aware Traffic Scheduling</h2><p>In Demo 3, Scenario 3, Time-Aware Traffic Scheduling (<samp class="codeph">taprio</samp> qdisc) supports multi-process and multi Tx window scheduling. The Tx window provides a protected transmission window for important packets (identified through VLAN priority). With a protected transmission window, the important packets are guaranteed to be transmitted for a specific interval of time, without interruption from other traffic. 
+      </p>
+<p>Follow these steps to confirm the 
+        <samp class="codeph">taprio</samp> qdisc configuration set up: 
+      </p>
+<ol id="GUID-F36278F2-42AC-44EB-A799-2EE4F24EA21D"><li>The mapping of priority to queue is configured in the 
+          <samp class="codeph">queue.cfg</samp> file: 
+          <pre>--queue.cfg—
+# PRIORITY QUEUE [ETF] [DELTA]
+5 0 etf 200000
+3 1 etf 200000
+7 2</pre><p> The format for each line is: 
+          </p>
+<pre>[PRIORITY] [QUEUE] [ETF] [DELTA]</pre><p>Where 
+          </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DC0467E0-1FDE-482C-99E6-52335A6159F2" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="19.493177387914233%"><samp class="codeph">[PRIORITY]</samp></td>
+<td class="cellrowborder" valign="top" width="80.50682261208577%"> VLAN priority of packets 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="19.493177387914233%"><samp class="codeph">[QUEUE]</samp></td>
+<td class="cellrowborder" valign="top" width="80.50682261208577%"> The hardware transmit queue number through which the VLAN priority-tagged will be routed. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="19.493177387914233%"><samp class="codeph"> [ETF]</samp></td>
+<td class="cellrowborder" valign="top" width="80.50682261208577%"> Flag to enable ETF qdisc on a queue. Specify etf for standard ETF qdisc mode or etf_deadline for ETF qdisc in deadline mode. Leave blank if not specifying ETF qdisc. Only applicable for queue 0 and 1. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="19.493177387914233%"><samp class="codeph">[DELTA]</samp></td>
+<td class="cellrowborder" valign="top" width="80.50682261208577%"> ETF qdisc delta value if ETF is turned on for a queue. 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> The sample application, by default, uses 4 hardware transmit queues, TxQ0 to TxQ3. Other priorities not being configured are mapped to queue 3. 
+          </div>
+</li>
+<li>The period of window scheduling is configured in the 
+          <samp class="codeph">gates.sched</samp> file. In IEEE 802.1Qbv-2015, this gate operation is also known as the gate control entry. 
+          <pre>--gates.sched—
+S 0x8 100000
+S 0x1 100000
+S 0x2 100000
+S 0x4 200000
+S 0x8 100000
+S 0x1 100000
+S 0x2 100000
+S 0x4 200000</pre><p> The format for each line is: 
+          </p>
+<pre>[CMD] [GATE MASK] [INTERVAL]</pre><p>Where 
+          </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B34D17F5-A7A3-41C9-86E8-08DD436E5380" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="18.832391713747647%"><samp class="codeph">[CMD]</samp></td>
+<td class="cellrowborder" valign="top" width="81.16760828625236%"> Gate command. For IEEE 802.1Qbv-2015, there is only one command "SetGateStates" and it is marked as "S". 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.832391713747647%"><samp class="codeph">[GATE MASK]</samp></td>
+<td class="cellrowborder" valign="top" width="81.16760828625236%"> Transmission gate states as defined in bitmask manner. 0 means closed and 1 means open. The least significant bit is transmission gate for traffic class 0. For example, a value of 0xC (1100b) means transmission gate for traffic class 2 &amp; 3 are opened and transmission gate for traffic class 0 &amp; 1 are closed. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.832391713747647%"><samp class="codeph">[INTERVAL]</samp></td>
+<td class="cellrowborder" valign="top" width="81.16760828625236%"> Time duration in nanoseconds that a gate operation as defined by &lt;CMD&gt; and &lt;GATE MASK&gt; are executed before the next gate operation. 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li>In demo 3,<samp class="codeph"> scheduler.py</samp> is provided to automate the programming of 
+          <samp class="codeph">taprio</samp> qdisc above-mentioned configuration files (<samp class="codeph">gates.sched</samp> and 
+          <samp class="codeph">queue.cfg</samp>). To program 
+          <samp class="codeph">taprio</samp> qdisc, execute the following command: 
+          <pre>$ python scheduler.py [-i ETHDEV] [-q PRIO2Q FILE]  [-e TX SCHED START LAPSE] [-g SCHED FILE]</pre><p>Where 
+          </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E6270702-9E36-4C78-B94B-2A57DE6371DB" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="22.32142857142857%"><samp class="codeph">[ETHDEV]</samp></td>
+<td class="cellrowborder" valign="top" width="77.67857142857142%"> Ethernet device name to be used for Demo 3. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="22.32142857142857%"><samp class="codeph">[SCHED FILE]</samp></td>
+<td class="cellrowborder" valign="top" width="77.67857142857142%"> Transmit schedule config file, for example, gates.sched. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="22.32142857142857%"><samp class="codeph">[PRIO2Q FILE]</samp></td>
+<td class="cellrowborder" valign="top" width="77.67857142857142%"> Priority to queue mapping config file, for example, queue.cfg file. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="22.32142857142857%"><samp class="codeph">[TX SCHED START LAPSE]</samp></td>
+<td class="cellrowborder" valign="top" width="77.67857142857142%"> Refers to the time in seconds in the future that should be lapsed before starting to execute the transmit schedule. For example, if the value specified is 60, the cycle will start 60 seconds in the future. 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <samp class="codeph">scheduler.py</samp> generates a file named 
+            <samp class="codeph">base_time</samp> that contains the base time in nanoseconds (based on the system clock since the Epoch + Tx schedule start lapse value) to be used by 
+            <samp class="codeph">sample-app-taprio</samp> to synchronize the sending of packets for scheduled traffic. The base time for starting the Tx schedule is also passed into 
+            <samp class="codeph">taprio</samp> qdisc as [basetime] as shown. 
+            <pre>$ tc qdisc add dev [ETHDEV] parent root handle 100 taprio 
+      num_tc 4 
+      map 3 3 3 1 3 0 3 2 3 3 3 3 3 3 3 3 
+      queues 0 1 2 3	
+      sched-file gates.sched 
+      base-time [basetime] 
+      clockid CLOCK_TAI</pre></div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>  CLOCK_TAI is the clock ID to identify that the time source is based on system time. 
+          </div>
+<p>If the transmit schedule config file (<samp class="codeph">gates.sched</samp>) is not specified, 
+            <samp class="codeph">scheduler.py</samp> will run 
+            <samp class="codeph">mqprio</samp> qdisc instead with the following command: 
+            <pre>$ tc qdisc add dev [ETHDEV] parent root mqprio 
+      num_tc 4 
+      map 3 3 3 1 3 0 3 2 3 3 3 3 3 3 3 3 
+      queues 1@0 1@1 1@2 1@3	
+      hw 0</pre></p>
+</li>
+<li><samp class="codeph">Sample-app-taprio</samp> takes a config file that specifies the information for all the windows for a packet sent with a specific priority in one TSN cycle. 
+          <pre>
+
+--tsn_prio5.cfg—
+cycle_time         1000000
+priority           5
+number_of_windows	 2
+
+window_1_offset	   100000
+window_1_duration  100000
+window_1_packets  	1
+
+window_2_offset	   600000
+window_2_duration  100000
+window_2_packets  	1
+
+</pre>Where 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-789594A1-C8F1-42F3-B907-AFD95CC3D58B" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="25.316455696202528%"><samp class="codeph">cycle_time</samp></td>
+<td class="cellrowborder" valign="top" width="74.68354430379746%"> To set cycle time of which Tx window repeats itself. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.316455696202528%"><samp class="codeph">priority</samp></td>
+<td class="cellrowborder" valign="top" width="74.68354430379746%"> To set VLAN priority (integer value from 0 to 7) for the transmitted scheduled traffic packets. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.316455696202528%"><samp class="codeph">number_of_windows</samp></td>
+<td class="cellrowborder" valign="top" width="74.68354430379746%"> Total number of Tx windows in one cycle. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.316455696202528%"><samp class="codeph">window_&lt;n&gt;_offset</samp></td>
+<td class="cellrowborder" valign="top" width="74.68354430379746%"> To set time elapsed before the first packet is transmitted for the nth Tx window in nanoseconds. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.316455696202528%"><samp class="codeph">window_&lt;n&gt;_duration</samp></td>
+<td class="cellrowborder" valign="top" width="74.68354430379746%"> To set the duration of the nth Tx window in nanoseconds. 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.316455696202528%"><samp class="codeph">window_&lt;n&gt;_packets</samp></td>
+<td class="cellrowborder" valign="top" width="74.68354430379746%"> To set the number of packets to be sent inside the nth Tx window. 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-EAB631A4-340A-4849-B363-B0BA5FC3CB88"><h2 class="sectiontitle"> sample-app-taprio and plot.sh</h2><p> The 
+        <samp class="codeph">sample-app-taprio</samp> application is a reference application to demonstrate IEEE 802.1Qbv. Depending on which scenario the user is running, different options need to be passed. This application is executed on both boards, one for transmitting scheduled traffic, another for receiving scheduled traffic. 
+      </p>
+<p>For<strong> Board A 
+        </strong>(the purpose of transmitting scheduled traffic): 
+        <pre>
+
+$ ./sample-app-taprio -i [ETHDEV] 
+      -c [RX-IP-address] 
+      -x [1|2]
+      -w [TSN-config-file]
+      [Options]
+
+</pre></p>
+<p> The options are: 
+      </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-44D75B4C-B4E0-499E-B901-4FFD84846846" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph">-A</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> To set CPU affinity. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph">-b [base_time]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Base time to start the TSN cycle in nanoseconds. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -B [file_name]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Typically it is base_time (as generated by scheduler.py) 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -d [1|2]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Turn Tx print display. On = 1, Off = 0 (Default). 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -D</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Set deadline mode for SO_TXTIME. Must be run with ETF qdisc deadline mode. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -E</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Enable error reporting on the socket error queue for SO_TXTIME 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -f [file_name]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Set the name of the output for logging. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -h</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Show help message. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -n [port_number]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> UDP destination port. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph">-o [port_number]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> UDP source port. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -p [TSN_priority]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> TSN priority. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph">-P [thread_priority]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> To set thread priority. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -S</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Do not use SO_TXTIME. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph">-t [cycle_time]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> TSN cycle time in nanoseconds. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph">-v [VLAN_ID]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> VLAN ID for TSN. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -x [1|2]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><strong> Required</strong><p> To set the application mode. Select 1 for transmit mode - the application will send TSN packets. Select 2 for receiving mode - the application will retrieve packets and display the information. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -w [file_name]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Config file, for example, tsn_prio5.cfg that contains all the window information for packets with specific priority in one TSN cycle. 
+                </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.44987775061125%"><samp class="codeph"> -z [time_elapsed]</samp></td>
+<td class="cellrowborder" valign="top" width="75.55012224938875%"><p> Delta from wake up to txtime in nanoseconds. 
+                </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ For 
+      <strong>Board B</strong> (to receive scheduled traffic): 
+      <pre>
+
+$ ./sample-app-taprio -i [ETHDEV] 
+      -x [1|2] 
+      -q &lt;priority-to-display&gt; 
+      [Options]
+
+</pre> In addition to the arguments above, the option specific for the receiving mode is: 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E0113F7D-543E-4207-8E59-292172BA6770" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="12.787723785166241%"><samp class="codeph">-y [1|2|3]</samp></td>
+<td class="cellrowborder" valign="top" width="87.21227621483376%"> To set receive process options where: 
+                <ul id="GUID-81A8FED8-80A0-4CA5-BECE-AFD0FBBCC618"><li> 1 = standard output logging only 
+                  </li>
+<li> 2 = graph plotting only (default) 
+                  </li>
+<li> 3 = standard output logging &amp; graph plotting 
+                  </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> On 
+        <strong>Board B</strong>, 
+        <samp class="codeph">sample-app-taprio</samp> will implicitly use 
+        <samp class="codeph">ethtool</samp> to configure Rx filters to direct incoming packets to specific Rx queues based on VLAN priority. By default, the steering configuration settings are: 
+        <ul id="GUID-90DD3B71-A112-44CE-A88F-7252D5BE06B6"><li>Queue 0: Packets with VLAN Priority 6 and 7 
+          </li>
+<li> Queue 1: Packets with VLAN Priority 4 and 5 
+          </li>
+<li> Queue 2: Packets with VLAN Priority 3 and 2 
+          </li>
+<li> Queue 3: Packets with VLAN Priority 6 and 7 
+          </li>
+</ul>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <ol id="GUID-355F8CD5-A47E-48A9-A9BF-6077C5C5D0F7"><li>To change the receive filters value, review the 
+            <samp class="codeph">create_filter()</samp> function in the source code for 
+            <samp class="codeph">sample-app-taprio.c</samp>. 
+          </li>
+<li>To display the runtime latency plot for scheduled traffic, run the 
+            <samp class="codeph">plot.sh</samp> script: 
+            <pre>
+
+$./plot.sh -p [VLAN PRIORITY],[VLAN PRIORITY]
+     [Options]
+
+</pre><p> The options are: 
+            
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BD2A1D35-0321-40E1-9B37-8A9586E5C5E8" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="25.125628140703515%"><samp class="codeph"> -h</samp></td>
+<td class="cellrowborder" valign="top" width="74.87437185929649%"><p> Show help message. 
+                      </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.125628140703515%"><samp class="codeph"> -m [y-axis_value]</samp></td>
+<td class="cellrowborder" valign="top" width="74.87437185929649%"><p> Maximum Y-axis value in nanosecond. 
+                      </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.125628140703515%"><samp class="codeph"> -n [y-axis_value]</samp></td>
+<td class="cellrowborder" valign="top" width="74.87437185929649%"><p> Minimum Y-axis value in nanosecond. 
+                      </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</li>
+<li>To display the latency distribution plot for scheduled traffic, run the 
+            <samp class="codeph">plot-distribution.sh</samp> script: 
+            <pre>
+
+$./plot.sh -p [VLAN PRIORITY],[VLAN PRIORITY] 
+     [Options]
+
+</pre></li>
+</ol>
+The options are: 
+        
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FEADECFE-7948-491E-A0FD-3D1AB4066254" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="25.44529262086514%"><samp class="codeph">-f [file_name] 
+                  </samp></td>
+<td class="cellrowborder" valign="top" width="74.55470737913487%"> Source file to get latency data from. 
+                </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.44529262086514%"><samp class="codeph">-g 
+                  </samp></td>
+<td class="cellrowborder" valign="top" width="74.55470737913487%"> Export plot as PNG image. 
+                </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.44529262086514%"><samp class="codeph">-h 
+                  </samp></td>
+<td class="cellrowborder" valign="top" width="74.55470737913487%"> Show help message. 
+                </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.44529262086514%"><samp class="codeph">-m [x-axis_value] 
+                  </samp></td>
+<td class="cellrowborder" valign="top" width="74.55470737913487%"> Maximum X-axis value in nanosecond. 
+                </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.44529262086514%"><samp class="codeph">-n [x-axis_value] 
+                  </samp></td>
+<td class="cellrowborder" valign="top" width="74.55470737913487%"> Minimum X-axis value in nanosecond. 
+                </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="25.44529262086514%"><samp class="codeph">-o [png_file_name]</samp></td>
+<td class="cellrowborder" valign="top" width="74.55470737913487%"> Exported PNG image name if "-g" is specified. 
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> The latency distribution plot currently only supports plotting two independent scheduled traffic streams as specified through 
+        <samp class="codeph">[VLAN PRIORITY]</samp>. 
+      </div>
+</div>
+</div>
+<div/>
+</body>
+</html>

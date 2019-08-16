@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="IEEE 802.1Qbv Demo 3 Scenario 3.3: Time-Aware Traffic Scheduling and LaunchTime Enabled (No Scripts)"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-1052775F-A4A6-4E3D-A4F3-66F9A420FCE1.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-79D33FC5-0B6E-4E84-AD91-6237BA1EBC3A"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>IEEE 802.1Qbv Demo 3 Scenario 3.3: Time-Aware Traffic Scheduling and LaunchTime Enabled (No Scripts)</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-79D33FC5-0B6E-4E84-AD91-6237BA1EBC3A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">IEEE 802.1Qbv Demo 3 Scenario 3.3: Time-Aware Traffic Scheduling and LaunchTime Enabled (No Scripts)</h1>
+<div><div class="section" id="GUID-D17ED60D-5812-48E9-B950-198B700761B3"><div class="Note"><h3 class="NoteTipHead">Note</h3> If you have completed this scenario using scripts, proceed to 
+        <a href="GUID-E153055C-9DF8-4695-A1E8-89B409FB04D6.html">IEEE 802.1Qbv Step 3: Pick the Scenario to Run</a> to run a different scenario. To run this step manually as described below, make sure you have already completed: 
+        <ul id="GUID-CB811849-18F8-44FF-905C-F58B91799270"><li><a href="GUID-ADB20930-F8A4-45FE-B810-34BFD7B17B92.html">IEEE 802.1Qbv Demo Step 1: Set up the Hardware</a></li>
+<li><a href="GUID-3F9C762E-D716-4D7E-BA1C-A915E5A6BA61.html">IEEE 802.1Qbv Demo Step 2: Build Software</a></li>
+</ul>
+<p> Refer to 
+          <a href="GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6.html#GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6">Demo 3: IEEE 802.1Qbv Time Aware Shaper</a> for a detailed description of the software components of the boards used. 
+        </p>
+</div>
+<p> This scenario has Time-Aware Traffic Scheduling and LaunchTime enabled. When LaunchTime with 
+        <samp class="codeph">etf qdisc</samp> is enabled in addition to Time-Aware Traffic Scheduling, the inter-packet latency distribution for both scheduled traffic becomes significantly narrowed compared to 
+        <a href="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE.html">IEEE 802.1Qbv Demo 3 Scenario 2 Time-Aware Traffic Scheduling Enabled</a>. The LaunchTime technology helps ensure scheduled traffic is sent in a time-deterministic manner. 
+      </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <ul id="GUID-3EA8F7EB-086F-439F-AB59-A439B1FE7A4D"><li> This section uses 
+            <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> as the Ethernet controller device interface name associated with Intel&reg; Ethernet Controller I210. The Ethernet device name may vary from board to board. Use 
+            <samp class="codeph">ifconfig</samp> or 
+            <samp class="codeph">ip addr</samp> to display the list of Ethernet devices on your board. 
+          </li>
+<li>For clarity, assign a name to each terminal on XFCE. Refer to 
+            <a href="GUID-39E61605-A4B3-433E-A8BF-94C31B85E0F7.html">Name a Terminal in XFCE</a>. This demo lists the names of the terminals above each command. 
+          </li>
+</ul>
+</div>
+<p><ol id="GUID-588EFC2A-B79B-493F-A2BA-69AD737C80E7"><li><strong> [Board A]</strong> Start a new terminal and name it (Shift-Ctrl-S) 
+          <strong>Synchronization</strong>. Check if any 
+          <samp class="codeph">qdisc</samp> is running on 
+          <strong>Board A.</strong><p><strong>[Board A]</strong><strong>Synchronization Terminal 
+            </strong></p>
+<pre>
+
+$ cd ~
+$ tc qdisc show dev <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span>
+
+</pre><p><br/><img src="GUID-4A5B7570-499D-449A-BCF9-88F6138A83E1-low.png" width="830"/><br/></p>
+<p/>
+<p> The screenshot above shows no 
+            <samp class="codeph">qdisc</samp> being installed except for the default 
+            <samp class="codeph">pfifo_fast qdisc</samp>. If other qdisc are installed besides the default, delete all of them by running the command below. Otherwise, skip this step. 
+          </p>
+<pre>
+
+$ tc qdisc del dev <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> root
+
+</pre></li>
+<li><p>On the Synchronization Terminal, set an IP address for Board A. 
+          </p>
+<p><strong>[Board A] Synchronization Terminal 
+            </strong></p>
+<pre>
+
+$ ip addr add <span class="color(#FF0000)" style="color:#FF0000">169.254.0.1</span>/24 brd <span class="color(#FF0000)" style="color:#FF0000">169.254.0.255</span> dev <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span>
+
+</pre></li>
+<li><p>On the Synchronization Terminal, create the VLAN interface under 
+            <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> so that all PTP packets are sent out with the VLAN header (VLAN ID=3 and Socket Priority=7 mapped to VLAN Priority=7). 
+          </p>
+<p><strong>[Board A] Synchronization Terminal</strong></p>
+<p><pre>
+
+$ ip link add link <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> name <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span> type vlan id 3 egress-qos-map 7:7
+$ ip addr show <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> &amp;&amp; ip addr show <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span>
+
+</pre></p>
+<p><br/><img src="GUID-E72B96F5-AE3C-40C6-85A8-036381C17C43-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li>On the Synchronization Terminal, start the 
+          <samp class="codeph">ptp4l</samp> daemon in the background to set the PTP clock as the grandmaster clock. 
+          <p><strong>[Board A] Synchronization Terminal</strong><pre>
+
+$ ptp4l -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span> -A -2 -m &amp;
+
+</pre>Where 
+            
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-548D247D-632C-4126-ADD6-2719C9A85BD9" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e174"> Argument 
+                    </th>
+<th class="cellrowborder" valign="top" id="d18630e176"> Description 
+                    </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e174 "><samp class="codeph">-A 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e176 "> Select the delay mechanism automatically. Start with end-to-end (E2E) and switch to peer-to-peer (P2P) when a peer delay request is received 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e174 "><samp class="codeph">-2 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e176 "> Select the IEEE 802.3 network transport 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e174 "><samp class="codeph">-m</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e176 "> Print messages to the standard output 
+                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><br/><img src="GUID-FF80352D-1810-4D92-8397-567AFDEB1F0B-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><p><strong>[Board A]</strong> On the Synchronization Terminal, synchronize the system clock with the PTP clock in the background using 
+            <samp class="codeph">phc2sys</samp>. 
+          </p>
+<p><strong>[Board A] Synchronization Terminal</strong><pre>
+
+$ phc2sys -s CLOCK_REALTIME -c <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span> -O 0 -w -m &amp;
+
+</pre></p>
+<p>Where 
+          </p>
+<p>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8EE6A255-025F-4960-A23A-8B2771266AC9" class="#DCD6D7" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e226">Argument 
+                  </th>
+<th class="cellrowborder" valign="top" id="d18630e228">Description 
+                  </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e226 "><samp class="codeph"> -s CLOCK_REALTIME</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e228 "> Specify the master clock by device or interface to CLOCK_REALTIME 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e226 "><samp class="codeph"> -c</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e228 "> Specify the slave clock by device to 
+                    <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e226 "><samp class="codeph"> -O 0 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e228 "> Specify the offset between the slave and master times to 0 seconds 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e226 "><samp class="codeph">-w</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e228 "> Wait until 
+                    <samp class="codeph">ptp4l</samp> is in a synchronized state 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e226 "><samp class="codeph">-m</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e228 "> Print messages to the standard output 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><br/><img src="GUID-F722E8A3-9B81-418D-8597-8E7AF7C1DD7E-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><p><strong>[Board B]</strong></p>
+<p>Start a new terminal and name it (Shift-Ctrl-S) 
+            <strong>Synchronization Terminal</strong>. Set an IP address for Board B. 
+          </p>
+<p><strong>[Board B]</strong><strong>Synchronization Terminal</strong></p>
+<pre>
+
+$ cd ~
+$ ip addr add <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span>/24 brd <span class="color(#FF0000)" style="color:#FF0000">169.254.0.255</span> dev <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> 
+
+</pre></li>
+<li><p><strong>[Board B]</strong> On the Synchronization Terminal, create a VLAN interface under 
+            <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> so that all PTP packets are sent out with the VLAN header. 
+          </p>
+<p><strong>[Board B]</strong><strong>Synchronization Terminal</strong></p>
+<pre>
+
+$ ip link add link <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> name <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span> type vlan id 3
+$ ip addr show <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> &amp;&amp; ip addr show <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span>
+
+</pre><p><br/><img src="GUID-9111B971-3487-4117-A443-AA9A910442C5-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><p><strong> [Board B]</strong> Start the 
+            <samp class="codeph">ptp4l</samp> daemon in the background to set the PTP clock as the slave clock. The PTP slave clock is synchronized to the PTP grandmaster clock after a couple of PTP messages are exchanged. 
+          </p>
+<p><strong> [Board B] Synchronization Terminal</strong><pre>
+
+$ ptp4l -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span> -A -2 -s -m &amp; 
+
+</pre></p>
+<p>Where 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DA3D3F42-AD19-40B1-9545-3F1538776229" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e356"> Argument 
+                  </th>
+<th class="cellrowborder" valign="top" id="d18630e358"> Description 
+                  </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e356 "><samp class="codeph"> -A</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e358 "> Select the delay mechanism automatically. Start with end-to-end (E2E) and switch to peer-to-peer (P2P) when a peer delay request is received 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e356 "><samp class="codeph"> -m</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e358 "> Print messages to the standard output 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e356 "><samp class="codeph"> -s</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e358 "> Enable the slave only mode 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><br/><img src="GUID-C5405409-4183-4F40-A0F8-B13F6D66DE46-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><p><strong>[Board B]</strong> Start a new terminal and name it (Shift-Ctrl-S) 
+            <strong>Phc2sys Terminal</strong>. Synchronize the system clock with the PTP clock in the background by using phc2sys. 
+          </p>
+<p><strong>[Board B] Phc2sys Terminal</strong><pre>
+
+$ phc2sys -s <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span> -c CLOCK_REALTIME -O 0 -w -m &amp;
+
+</pre> Where 
+          </p>
+<p>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-42A56A0F-FDCF-40F9-88BB-ED56A977854F" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e407"> Argument 
+                  </th>
+<th class="cellrowborder" valign="top" id="d18630e409"> Description 
+                  </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e407 "><samp class="codeph">-s 
+                      <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span></samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e409 "> Specify the master clock by device or interface to 
+                    <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e407 "><samp class="codeph">-c CLOCK_REALTIME 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e409 "> Specify the slave clock by device to CLOCK_REALTIME 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e407 "><samp class="codeph">-O 0 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e409 "> Specify the offset between the slave and master times to 0 seconds 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e407 "><samp class="codeph">-w 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e409 "> Wait until ptp4l is in a synchronized state 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e407 "><samp class="codeph">-m 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e409 "> Print messages to the standard output 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><br/><img src="GUID-E649B6A8-92C3-4D27-9766-9C89E3AD300A-low.png" width="830"/><br/></p>
+<p/>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> Completing Steps 1-9 synchronizes time on both boards using the IEEE 1588 PTP protocol. The PTP messages are set up to be transmitted with VLAN headers (VLAN ID=3 and VLAN priority 7). 
+          </div>
+</li>
+<li><p><strong>[Board B]</strong> Start a new terminal and name it (Shift-Ctrl-S) 
+            <strong>Iperf3 Terminal</strong>. Run the iperf3 server on CPU core 4 to receive Best Effort packets. 
+          </p>
+<p><strong>[Board B] Iperf Terminal</strong><pre>
+
+$ cd ~
+$ iperf3 -s -A 2
+
+</pre></p>
+<p><br/><img src="GUID-6952006A-F39D-42EF-ADFA-CA0CB7E8E388-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><strong>[Board A]</strong> Start a new terminal and name it (Shift-Ctrl-S) 
+          <strong>Sample-app-taprio Terminal</strong> to enable real-time scheduling: 
+          <p class="#DCD6D7"><strong>[Board A] Sample-app-taprio Terminal</strong><pre>
+
+$ cd ~
+$ sysctl kernel.sched_rt_runtime_us=-1
+
+</pre></p>
+</li>
+<li><strong>[Board A]</strong> On the Sample-app-taprio Terminal, change the directory to sample-app-taprio. 
+          <p><strong>[Board A] Sample-app-taprio Terminal</strong><pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-taprio/
+
+</pre></p>
+</li>
+<li><strong>[Board A]</strong> On the Sample-app-taprio Terminal, check that the following for the IEEE 802.1Qbv demo are as intended: 
+          <ol type="a" id="GUID-E79C5DB9-D5B6-44B3-9EF1-BE566CE86F04"><li> Configuration for the Tx windows schedule (in 
+              <samp class="codeph">gates-s2s3.sched</samp>) 
+            </li>
+<li> Priority-to-queue mapping (<samp class="codeph">queue-s3s4.cfg</samp>) 
+            </li>
+<li> Transmit window timing (<samp class="codeph">tsn_prio5-s1s2s3.cfg</samp>and 
+              <samp class="codeph">tsn_prio3-s1s2s3.cfg</samp>) 
+              <div class="Note"><h3 class="NoteTipHead">Note</h3>  The default configuration files designed for this scenario: taprio and LaunchTime are enabled follow. For a detailed understanding, refer to 
+                <a href="GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658.html#GUID-37A7AA7C-B7AA-4708-A0CD-0E8C2C9412EF">Transmit Window Configuration for Time-Aware Traffic Scheduling</a>. 
+              </div>
+<p><pre>
+
+--gates-s2s3.sched-- 
+S 08 100000
+S 01 100000
+S 02 100000
+S 04 200000
+S 08 100000
+S 01 100000
+S 02 100000
+S 04 200000
+
+--queue-s3s4.cfg--
+# PRIORITY QUEUE [ETF] [DELTA]
+5 0 etf 200000
+3 1 etf 200000
+7 2
+
+--tsn_prio5-s1s2s3.cfg--
+cycle_time        1000000
+priority          5
+number_of_windows 2
+
+window_1_offset   100000
+window_1_duration 100000
+window_1_packets  1
+
+window_2_offset   600000
+window_2_duration 100000
+window_2_packets  1
+
+--tsn_prio3-s1s2s3.cfg--
+cycle_time        1000000
+priority          3
+number_of_windows 2
+
+window_1_offset   200000
+window_1_duration 100000
+window_1_packets  1
+
+window_2_offset   700000
+window_2_duration 100000
+window_2_packets  1
+
+
+</pre></p>
+</li>
+</ol>
+</li>
+<li><strong>[Board A</strong>] On the Sample-app-taprio Terminal, execute 
+          <samp class="codeph">scheduler.py</samp> to configure taprio. 
+          <p><strong>[Board A] Sample-app-taprio Terminal</strong><pre>
+
+$ python scheduler.py -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -q queue.cfg -e 120 -g gates-s2s3.sched
+
+</pre><div class="Note"><h3 class="NoteTipHead">Note</h3> <samp class="codeph">-e 120</samp> refers to the number of seconds in the future to start executing Tx schedules/windows for scheduled traffic. Based on empirical observations, a value larger than 30 seconds is recommended to let the adapter finish resetting and PTP clock syncing. 
+            </div>
+</p>
+<p><br/><img src="GUID-ABE9FA64-893A-4DA9-B0E3-7A54B898288F-low.png" width="830"/><br/></p>
+<p/>
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3>  The program will generate a 
+              <samp class="codeph">base_time</samp> file that contains the start time of the IEEE 802.1Qbv Gate Control List. 
+            </div>
+</p>
+</li>
+<li><p><strong>[Board A]</strong> On the Sample-app-taprio Terminal, run 
+            <samp class="codeph"> sample-app-taprio</samp> with VLAN priority 5. In this step, 
+            <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span> is the base IP Address ( 
+            <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> not 
+            <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0.3</samp></span>) for the Board B device. Your IP address may differ. 
+          </p>
+<p><strong>[Board A] Sample-app-taprio Terminal</strong><pre>
+
+$ ./sample-app-taprio -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -c <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span> -x 1 -w tsn_prio5-s1s2s3.cfg -B base_time -z 600000 &amp;
+
+</pre></p>
+<p>Where 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4F37B70D-10E2-4614-9D01-C302697A11A8" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e595"> Argument 
+                  </th>
+<th class="cellrowborder" valign="top" id="d18630e597"> Description 
+                  </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e595 "><samp class="codeph">-x 1 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e597 "> Set to transmit mode 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e595 "><samp class="codeph">-w tsn_prio5.cfg 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e597 "> Window and packet configuration file 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e595 "><samp class="codeph">-B base_time 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e597 "> Use the base time calculated by scheduler.py for starting transmitting scheduled traffic 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e595 "><samp class="codeph">-z 600000</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e597 "> Delta from wake up to hardware txtime set to 600 µs (6 with 5 zeroes) 
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p>You will see the following output: 
+          </p>
+<p><br/><img src="GUID-A28327DB-62CF-4713-8338-0495F8F514FF-low.png" width="830"/><br/></p>
+<p/>
+<p>If, however, the sample-app-taprio command yields the following error, the issue is likely a lost network connection or the network adapter. 
+          </p>
+<p><br/><img src="GUID-E6DB6E1E-86E0-4C46-BB15-D4AC2C0ED13B-low.png" width="830"/><br/></p>
+<p>Run the command below. Upon successfully passing the ping test, run the sample-app-taprio command again. 
+          </p>
+<p><pre>
+
+$ ping <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span>
+
+</pre></p>
+</li>
+<li><strong>[Board A]</strong> On the Sample-app-taprio Terminal, run another instance of sample-app-taprio with VLAN priority 3 with base time specified. 
+          <p><strong>[Board A] Sample-app-taprio Terminal</strong><pre>
+
+$ ./sample-app-taprio -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -c <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span> -x 1 -w tsn_prio3-s1s2s3.cfg -B base_time -z 600000 -A 3 &amp;
+
+</pre> Where 
+            
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-44EBBDE6-8B98-4356-8384-36F31CFA8567" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e664"> Argument 
+                    </th>
+<th class="cellrowborder" valign="top" id="d18630e666"> Description 
+                    </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e664 "><samp class="codeph">-x 1 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e666 "> Set to transmit mode 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e664 "><samp class="codeph">-w tsn_prio3-s1s2s3.cfg 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e666 "> Window and packet configuration file 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e664 "><samp class="codeph">-B base_time 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e666 "> Use the base time calculated by scheduler.py for starting transmitting scheduled traffic 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e664 "><samp class="codeph">-z 600000</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e666 "> Delta from wake up to hardware txtime set to 600 µs (6 with 5 zeroes) 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e664 "><samp class="codeph">-A 3 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e666 "> Set CPU affinity to 3 
+                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><br/><img src="GUID-01D91603-553E-4977-9FBC-6A759E902FF7-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><strong>[Board A]</strong> Start a new terminal and name it (Shift-Ctrl-S) 
+          <strong>Iperf3 Terminal</strong>. Run the iperf3 client on CPU core 2. 
+          <p><strong>[Board A] Iperf3 Terminal</strong><pre>
+
+$ cd ~
+$ iperf3 -c <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span> -t 600 -b 0 -u -l 1448 -A 2
+
+</pre>Where 
+            
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-55085CAB-F5D1-40BA-A4E6-EF6EB0391B42" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e724"> Argument 
+                    </th>
+<th class="cellrowborder" valign="top" id="d18630e726"> Description 
+                    </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e724 "><samp class="codeph">-c 
+                        <span class="color(#FF0000)" style="color:#FF0000">169.254.0.2</span></samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e726 "> Run iperf3 in client mode 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e724 "><samp class="codeph"> -t 600 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e726 "> Specify time to run to 600 seconds 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e724 "><samp class="codeph"> -b 0 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e726 "> Set target bandwidth to 0 bits/sec 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e724 "><samp class="codeph"> -u 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e726 "> Stream UDP packets 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e724 "><samp class="codeph"> -l 1448 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e726 "> Specify length in buffers to read or write to 1448 bytes 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e724 "><samp class="codeph">-A 2 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e726 "> Set CPU affinity to core #2 
+                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</li>
+<li><strong> [Board B]</strong> Start a new terminal and name it (Shift-Ctrl-S) 
+          <strong>Sample-app-taprio Terminal</strong>. Change the directory to sample-app-taprio. 
+          <p><strong>[Board B] Sample-app-taprio Terminal</strong><pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-taprio/
+
+</pre></p>
+</li>
+<li><strong>[Board B]</strong> On the Sample-app-taprio Terminal, run sample-app-taprio in receiving mode. Let the application run for 2 minutes or longer. 
+          <strong>Choose the command based on your requirements for graph plot, graph plot and output, or output only.</strong><strong>[Board B] Sample-app-taprio Terminal</strong><pre>
+
+# For graph plotting only (default):
+$ ./sample-app-taprio -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -x 2 -q “5 3” -y 2
+
+# For graph and standard output logging:
+$ ./sample-app-taprio -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -x 2 -q “5 3” -y 3
+
+# For standard output logging only:
+$ ./sample-app-taprio -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -x 2 -q “5 3” -y 1
+
+</pre>Where 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-85CB47B9-FDF5-46E0-8F3F-CD68B7AF2C53" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e812"> Argument 
+                  </th>
+<th class="cellrowborder" valign="top" id="d18630e814"> Description 
+                  </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e812 "><samp class="codeph">-i 
+                      <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span></samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e814 "> Specify interface for AVB connection 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e812 "><samp class="codeph">-x 2 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e814 "> Set to receive mode only 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e812 "><samp class="codeph">-q "5 3" 
+                    </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e814 "> Select to display TSN packets with priority 5 and 3 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e812 "><samp class="codeph">-y</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e814 "> 2 graph only output 
+                    <p>3 I/O and graph output 
+                    </p>
+<p>1 I/O only 
+                    </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> Below is an example of standard output logging. 
+          </p>
+<p><br/><img src="GUID-0093326F-915A-424C-A20F-7FE98FB71693-low.png" width="830"/><br/></p>
+<p/>
+</li>
+<li><p><strong>[Board B]</strong> Start a new terminal and name it (Shift-Ctrl-S) Plot Terminal, change the directory to sample-app-taprio. 
+          </p>
+<p><strong>[Board B] Plot Terminal</strong></p>
+<pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-taprio/
+
+</pre></li>
+<li><p><strong>[Board B] [Optional]</strong> On the Plot Terminal, run plot.sh to display a runtime transmission latency plot for scheduled traffic (VLAN priority = 3 &amp; 5). 
+            <div class="Note"><h3 class="NoteTipHead">Note</h3> The runtime transmission latency plot is for informational purposes only and is not a part of our discussion and result analysis. 
+            </div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> To terminate the latency plot, select the latency plot graph and then press "c". 
+            </div>
+</p>
+<p><strong>[Board B] Plot Terminal</strong><pre>
+
+$ chmod +x plot.sh
+$ ./plot.sh -p 5,3 -m 1000000 
+
+</pre>Where 
+            
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A624ECE6-A7B4-4EB1-8883-485DD87625E5" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d18630e888"> Argument 
+                    </th>
+<th class="cellrowborder" valign="top" id="d18630e890"> Description 
+                    </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d18630e888 "><samp class="codeph">-p 5,3</samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e890 "> Select to plot packets with VLAN priority 5 and 3 
+                    </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d18630e888 "><samp class="codeph">-m 1000000 
+                      </samp></td>
+<td class="cellrowborder" valign="top" headers="d18630e890 "> Set the maximum latency Y-axis to1000000 ns (1 with 6 zeroes) 
+                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</li>
+<li><strong>[Board B] Plot Terminal</strong><p> On the Plot Terminal, after running for 2 minutes or longer, press CTRL-C to terminate 
+            <samp class="codeph">sample-app-taprio</samp>. 
+          </p>
+</li>
+<li><p><strong>[Board A] 
+            </strong> End the sample-app-taprio and iperf3 client applications. 
+          </p>
+<strong>[Board A] 
+          </strong><pre>
+
+$ killall sample-app-taprio
+$ pkill iperf3
+
+</pre></li>
+<li><p><strong>[Board B] 
+            </strong></p>
+<p>On the Plot Terminal, run<samp class="codeph"> plot-distribution.sh</samp> to get the inter-packet latency distribution graph. A copy of a PNG image will be created if the flag "-g" is specified and named as specified in the option "-o". 
+          </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> Generating the plot can take a longer time, depending on the size of data source file (default latencies.dat). 
+          </div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>  The plot distribution scale is not guaranteed to be exactly the same for all test cases. Modify the scale by using the "-m" flag to set the maximum X axis and "-n" flag to set the minimum X axis. 
+          </div>
+<p>Refer to 
+            <a href="GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658.html#GUID-37A7AA7C-B7AA-4708-A0CD-0E8C2C9412EF">Transmit Window Configuration for Time-Aware Traffic Scheduling</a>. 
+          </p>
+<strong>[Board B] Plot Terminal</strong><pre>
+
+$ chmod +x plot-distribution.sh
+
+# To plot distribution for priority 5 and priority 3 on the same graph
+$ ./plot-distribution.sh -p 5,3 -g -o latencies-s3-all.png -m 510000 -n 490000
+
+# To plot distribution for priority 5 only
+$ ./plot-distribution.sh -p 5 -g -o latencies-s3-prio5.png -m 510000 -n 490000
+
+# To plot distribution for priority 3 only
+$ ./plot-distribution.sh -p 3 -g -o latencies-s3-prio3.png -m 510000 -n 490000
+
+</pre></li>
+<li><p><strong>[Board B]</strong> On the Plot Terminal, remove all data logging files 
+          </p>
+<pre>
+
+$ rm *.dat zrx.log
+
+</pre><p/>
+</li>
+</ol>
+</p>
+</div>
+<div class="section" id="GUID-7625E8F1-740A-4D02-8BA9-1CF6DF50AB57"><h2 class="sectiontitle">Analyze Network Traffic: Demo 3 Scenario 3.3: taprio qdisc and LaunchTime Enabled </h2><p>The demo scenario has taprio qdisc and LaunchTime enabled. For an overview of network traffic analysis, refer to 
+        <a href="GUID-BDEF102F-4D53-4DF8-A188-319B82B4F38B.html">IEEE 802.1Qbv Demo: Analyze the Results</a>. 
+      </p>
+<p>For instructions on opening a plotted graph image using a viewer, refer to 
+        <a href="GUID-D2885E8E-C6F5-4031-A24E-D953D7E201BA.html">Open an Image Using Ristretto Image Viewer</a>. 
+      </p>
+<div class="fignone" id="GUID-A6F1262B-F31B-442F-B7DD-A346E6A17536"><span class="figcap"> Inter-packet Latency Distribution Graphs for Demo 3 Scenario 3.3: Time-Aware Traffic Scheduling and LaunchTime Enabled</span></div>
+<p><br/><img src="GUID-6548418C-A4BD-4DFB-AFCB-90C9BA34785F-low.png" width="830"/><br/></p>
+<p/>
+<p><br/><img src="GUID-B61580A4-2AB1-4815-8CFE-CBF163CE00C3-low.png" width="830"/><br/></p>
+<p/>
+<p><br/><img src="GUID-325E8B47-33C2-4043-9AD8-94294B67BA4A-low.png" width="830"/><br/></p>
+<p/>
+<p>When LaunchTime is enabled in addition to Time-Aware Traffic Scheduling, the inter-packet latency distribution for both scheduled traffic reduces greatly compared to the scenario with only Time-Aware Traffic Scheduling enabled. This result is consistent with the fact that LaunchTime technology ensures scheduled traffic is pre-fetched ahead of time from system memory into the Ethernet MAC controller for transmission at the defined time. The transmission gating effect of 
+        <samp class="codeph">taprio qdisc</samp> provides a protected transmission window for scheduled traffic from interfering Best Effort traffic. As a result, combining these two technologies ensures that Ethernet frames for scheduled traffic are sent out in a protected transmission window at accurate times. In this scenario, a sample count is at 500 µs inter-packet latency. 
+      </p>
+<p> In this release, we have not used Preempt-RT in the Linux kernel and it is rare to have a single digit sample count outside the 500 µs inter-packet sample count. As the range of the Y-axis range is very high, the single digit sample count away from 500 µs is not visually obvious. 
+      </p>
+<p> The inter-packet latency distribution for VLAN priority=3 is slightly less than perfect compared to the VLAN priority=5 frame because the result is obtained from non preempt-RT Linux and in rare circumstances, the scheduling of the process that sends scheduled traffic could be slightly off. Another reason could be that the VLAN priority=5 frame is higher in transmission selection priority compared to the VLAN priority=3 frame. 
+      </p>
+<p>Next: 
+        <a href="GUID-B5D44613-1655-41FE-9331-9CC08A5C1C6B.html">IEEE 802.1 Qbv Next Steps</a></p>
+</div>
+</div>
+<div/>
+</body>
+</html>

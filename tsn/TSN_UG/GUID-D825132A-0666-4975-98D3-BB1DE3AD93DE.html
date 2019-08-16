@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Time Synchronization Demo 1 Step 1: Set up the Hardware"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-8F333F31-BBF8-4595-AE33-A780E3318A9A.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-D825132A-0666-4975-98D3-BB1DE3AD93DE"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Time Synchronization Demo 1 Step 1: Set up the Hardware</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-D825132A-0666-4975-98D3-BB1DE3AD93DE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Time Synchronization Demo 1 Step 1: Set up the Hardware</h1>
+<div><div class="section" id="GUID-E3AC895C-620B-4C76-9714-2A3551D6A455"><p> The following figure shows the hardware set up for the time synchronization demo. 
+      </p>
+<div class="fignone" id="GUID-751C975F-C0E6-46AF-8622-81A809E47F37"><span class="figcap"> Time Synchronization Demo 1 Setup</span><br/><img src="GUID-EB1DDCA5-3206-42D2-888F-5790DD191A5B-low.png" width="930"/><br/></div>
+<p>Each Apollo Lake-I-based platform contains an Intel&reg; Ethernet Controller I210. Each Intel&reg; Ethernet Controller I210 has two SDP pins, one RJ45 Ethernet connector, one PTP clock, and two auxiliary time-stamps. 
+      </p>
+<p>Refer to the schematics of the hardware you are using for the pin and header details. For instance, using the Intel&reg; Ethernet Controller I210, 
+      </p>
+<ul id="GUID-2C39FCF0-66C9-45EE-A450-DE7877A1F0F3"><li>Intel&reg; Ethernet Controller I210 IC SDP0 corresponds to pin 63 
+        </li>
+<li>Intel&reg; Ethernet Controller I210 IC SDP1 corresponds to pin 61 
+        </li>
+</ul>
+<p>Alternatively, using a PCIe card: 
+      </p>
+<ul id="GUID-31A2FB23-B999-4087-9CC6-42C2386EE9DF"><li>PCIe Card SDP0 corresponds to Header Pin 2 
+        </li>
+<li>PCIe Card SDP1 corresponds to Header Pin 4 
+        </li>
+</ul>
+<div class="fignone" id="GUID-25D6494B-DC68-4372-BFD3-23AB7D19A1C8"><span class="figcap">Pin and Header Details</span><br/><img src="GUID-D09018EA-1708-4ABD-AD93-08EA2D77F3A4-low.png" width="930"/><br/></div>
+<p>For the purpose of this demo, assign these two platforms as shown below. 
+      </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5FCC7867-17E9-4E88-9E2A-38F5F6D8ADD8" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="NaN%"><strong>Board A</strong></td>
+<td class="cellrowborder" valign="top" width="NaN%">The platform on which the PTP clock of the Intel Ethernet Controller I210 acts as the grandmaster clock. 
+              </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%"><strong>Board B</strong></td>
+<td class="cellrowborder" valign="top" width="NaN%">The platform on which the PTP clock of the Intel Ethernet Controller I210 acts as the slave clock. 
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To set up the time synchronization demo, follow these steps: 
+      </p>
+</div>
+<ol id="GUID-78D85764-0172-4A12-9307-8BCBE0A1D67B"><li class="stepexpand"> Connect one end of a CAT-5E Ethernet cable to the RJ45 connector of 
+          <strong>Board A</strong>. Connect the other end of the cable to the RJ45 connector of 
+          <strong>Board B</strong>. 
+        </li>
+<li class="stepexpand"> Connect SDP0 and SDP1 of 
+          <strong>Board A</strong> using a jumper wire. 
+        </li>
+<li class="stepexpand"> Connect SDP0 of 
+          <strong>Board A</strong> to SDP1 of 
+          <strong>Board B</strong> using another jumper wire. 
+        </li>
+<li class="stepexpand"> Power on both 
+          <strong>Board A</strong> and 
+          <strong>Board B</strong>. 
+        </li>
+<li class="stepexpand"> Observe that the NIC LEDs are blinking on both boards. 
+        <div><p>Next: 
+            <a href="GUID-5608B646-5504-4CC4-A9DF-FE349E2515F0.html">Time Synchronization Demo 1 Step 2: Build Software</a></p>
+</div></li>
+</ol>
+</div>
+<div/>
+</body>
+</html>
