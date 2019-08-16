@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="CPU Clock Optimization"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-A88526BF-EAF5-44D3-8081-80823CBD9F54.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>CPU Clock Optimization</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body id="GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">CPU Clock Optimization</h1>
+<div><p>Tuning the BIOS makes runtime behavior more deterministic; features such as power management are disabled and the CPU is running at top speed. Performance outside of the context of determinism may be negatively impacted. Consider the following tuning configuration to execute the TSN Reference Software demos. Based on your use case, you can decide later to use a different configuration. 
+    </p>
+<div class="section" id="GUID-02EC4DBD-724A-4C49-B0CA-A6744FDED8B4"><h2 class="sectiontitle"> Enable Intel SpeedStep&reg; Technology and C-States in BIOS [Board A &amp; Board B]</h2><ol id="GUID-4A0EE9E3-B356-4AA2-9A78-DD50BAB22605"><li>While the platform is booting, press F2 to enter the BIOS menu 
+        </li>
+<li> Go to Device Manager &gt; System Setup &gt; CPU Configuration &gt; CPU Power Management 
+          <br/><img src="GUID-9A81398A-7975-43BE-AAF4-7244D4F6D7D5-low.png" width="930"/><br/><br/><img src="GUID-A864178A-A1C7-433D-ACC0-601C2C32BF2B-low.png" width="930"/><br/><br/><img src="GUID-A25EE620-B638-4058-B8BE-4946BAE5ABC8-low.png" width="930"/><br/><br/><img src="GUID-0BB995E0-F6E5-4DCE-971F-5EA5484E913F-low.png" width="930"/><br/></li>
+<li> Set Intel SpeedStep&reg; technology to Enable 
+          <br/><img src="GUID-87F54912-D34B-427F-B6CF-56A5B75BEF66-low.png" width="930"/><br/></li>
+<li>Set C-States to Disable<br/><img src="GUID-52780628-48F2-411A-AAB4-EEE54D618878-low.png" width="930"/><br/></li>
+<li> Save the changes in BIOS menu and then restart. 
+        </li>
+</ol>
+</div>
+<div class="section" id="GUID-CE91E1EE-07E0-46B2-BD44-766CBF7AD20B"><h2 class="sectiontitle">Enable Performance Mode in Board A and Board B</h2><p>Follow these steps to change the CPU frequency from scaling governor to performance mode. This ensures the CPU is running at the highest frequency. 
+        <div class="Note"><h3 class="NoteTipHead">Note</h3> Repeat these steps with every restart. 
+        </div>
+</p>
+<ol id="GUID-FD90972D-6894-4A0C-B99C-053D8800AE7C"><li>Start a new terminal 
+        </li>
+<li>Enter the following: 
+          <p><pre>
+
+# echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+# echo performance &gt; /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+# echo performance &gt; /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+# echo performance &gt; /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+
+</pre><br/><img src="GUID-5C42A74C-A5C6-4660-B87D-47C19E691567-low.png" width="930"/><br/></p>
+</li>
+<li><strong>[Optional] 
+          </strong>Check the CPU clock frequency: 
+          <p><pre>
+
+# cat /proc/cpuinfo | grep MHz
+
+</pre><br/><img src="GUID-AA2AFE75-0A8B-4414-B9E8-30D7F62666B9-low.png" width="530"/><br/><div class="Note"><h3 class="NoteTipHead">Note</h3> Once the CPU Clock is optimized, the CPU Frequency should typically be over 1500 MHz. 
+            </div>
+</p>
+</li>
+</ol>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="GUID-A88526BF-EAF5-44D3-8081-80823CBD9F54.html">Get Started</a></div>
+</div>
+<div/>
+</body>
+</html>

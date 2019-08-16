@@ -1,0 +1,69 @@
+﻿[default]
+; Formerly in NavScript_BatchJob.FarRun
+LoadHtmlFiles
+AddNavScript
+; Content formerly in farhelp_bat_template.ini
+;File001=NavScriptFarHelp_bat.FarRun,BuildSearch
+;File002=NavScriptFarHelp_bat.FarRun,SearchFiles
+;File003=NavScriptFarHelp_bat.FarRun,BuildHelp
+BuildSearch
+SearchFiles
+BuildHelp
+
+; ------------------------------------------------------------------------------
+; Content formerly in NavScript_BatchJob.FarRun
+; ------------------------------------------------------------------------------
+[LoadHtmlFiles]
+FileScan=.\*.htm*
+
+[AddNavScript]
+FindStart='<body'
+FindEnd.Checked=y
+FindEnd='>'
+FindContains.Checked=n
+FindContains=''
+FindNotContains.Checked=n
+FindNotContains='>'
+Replace.Checked=y
+Replace='$A$'
+\ ' <!-- ==============(Start:NavScript)================= -->'
+\ ' <script src="$R$[str:..\]NavScript.js" language="JavaScript1.2" type="text/javascript"></script>'
+\ ' <script language="JavaScript1.2" type="text/javascript">WriteNavLink($R$[int:0]);</script>'
+\ ' <!-- ==============(End:NavScript)================= -->'
+\ ''
+RelativePath=''
+Notes=''
+AdvPaneShowing=n
+IgnoreCase=y
+IgnoreCRLF=y
+IgnoreMultiSpace=y
+DosUnix=n
+FindFirstOnly=n
+MatchStartOnly=n
+$A$.UseOrig=y
+$A$.FindSubStrNo=1
+$A$.ContainingText=''
+
+; ------------------------------------------------------------------------------
+; Content formerly in farhelp_bat_template.ini
+; ------------------------------------------------------------------------------
+[BuildSearch]
+;OpenFarList=~hhp_file~
+Drop_Options=FilterHTMOnly
+DirScan="D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out"
+JSSearch = Y
+JSSearch_Filename = searchdata.js
+JSSearch_ExtraChars = (+./)
+
+[SearchFiles]
+_opSkipDirs=0
+_opSkipFiles=0
+_opIncFiles=1
+_opSkipDirsSL=_vti*|1|_private|0|_*|0|
+_opSkipFilesSL=.zip|1|.exe|1|.com|1|.dll|0|.bak|1|.~*|0|.toc|1|.hhp|0|.chm|0|.hhk|0|.hhc|0|
+_opIncFilesSL=.ht*|1|.jpg|0|.gif|0|.txt|0|.png|0|
+
+[BuildHelp]
+MakeUncompHelp = "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out"
+MakeUncompHelp_Section="tsn"
+MakeUncompHelp_CopyExtraFiles=Y

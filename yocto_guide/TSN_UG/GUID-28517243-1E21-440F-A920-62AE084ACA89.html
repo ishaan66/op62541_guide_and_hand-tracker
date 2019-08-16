@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="Demo 2: IEEE 802.1Qav Credit Based Shaper"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-D3D64F21-BA42-448A-95AA-1696719D16ED.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-E3181D13-8B47-46CE-96B3-9918E37E3862.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-872A4245-48FA-4CBB-B6BB-B7A9D2FD6B06.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-1D7AC947-6AC5-4E95-AC56-624B7803FC67.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-5CE351F3-B150-45A2-9E9F-4F76DC77AD12.html"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-933B0CE0-FD8C-4CA8-ABDE-B20AF0E03465.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-28517243-1E21-440F-A920-62AE084ACA89"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Demo 2: IEEE 802.1Qav Credit Based Shaper</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-28517243-1E21-440F-A920-62AE084ACA89">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Demo 2: IEEE 802.1Qav Credit Based Shaper</h1>
+<div><p>The sample application demonstrates the use of the 
+      <strong>Credit Based Shaper (CBS)</strong> (IEEE 802.1Qav) and the 
+      <strong>LaunchTime</strong> feature of Intel&reg; Ethernet Controller I210 to ensure bounded transmission latency for time sensitive, loss-sensitive real-time data stream. In addition, this example demonstrates the use of the Stream Reservation Protocol (SRP) as described in IEEE 802.1Qat for time-sensitive traffic resource management. 
+    </p>
+<p>This demo uses three scenarios to demonstrate the benefits of CBS and LaunchTime technology in reducing transmission jitter and latency. In all of the scenarios, we will transmit 
+      <em>time sensitive traffic</em> and 
+      <em>best effort traffic</em> from Board A. The difference of each of the scenarios lies in the transmit configuration used in Board A. The scenarios are: 
+    </p>
+<ul id="GUID-0A1A3B50-E37F-43BD-AFC0-0EA24691ECCA"><li>No Qav: Both CBS and LaunchTime are disabled 
+      </li>
+<li> Only CBS is enabled 
+      </li>
+<li>Both CBS and LaunchTime are enabled 
+      </li>
+</ul>
+<p/>
+<p>Time sensitive traffic is characterized according to the traffic specification defined in IEEE 802.1Qat as: 
+    </p>
+<ul id="GUID-58AD9920-A468-44E7-98C6-80EC35CD8560"><li>Stream Reserved (SR) Class A: 8000 packets per second, that is, each packet is 125 µs apart. 
+      </li>
+<li>Stream Reserved (SR) Class B: 4000 packets per second, that is, each packet is 250 µs apart. 
+      </li>
+</ul>
+<p>In this demo, we will reserve SR Class A bandwidth for time sensitive traffic and the traffic is encoded using IEEE 1722 Audio Video Transport Protocol (AVTP) format. Such IEEE 1722 encoded traffic is also commonly known as AVB (Audio/Video Bridge) stream. IEEE 1722 AVTP format can be used to encapsulate audio-only data stream and this type of data stream is used in this demo. 
+    </p>
+<p>In this section, we consistently use the term<em> time sensitive traffic</em> to refer to the above-mentioned SR Class A and IEEE 1722-encoded Audio stream. 
+    </p>
+<p>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C02E9434-D953-4049-8611-150FC35D759F" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d5612e54"> Description 
+            </th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d5612e56"> Estimated Time taken 
+            </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" colspan="2" valign="top" headers="d5612e54 d5612e56 "><a href="GUID-D3D64F21-BA42-448A-95AA-1696719D16ED.html">IEEE 802.1Qav Demo Step 1: Set Up the Hardware</a></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-D3D64F21-BA42-448A-95AA-1696719D16ED.html#GUID-4F3470A9-1221-4ECB-ACD3-910925DBD496">Option 1: Direct Connection without a Switch</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> 10 minutes 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-D3D64F21-BA42-448A-95AA-1696719D16ED.html#GUID-43699875-AEDD-4A8A-A54B-B11486A384F2">Option 2: Connection with a Switch</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> 10 minutes 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-E3181D13-8B47-46CE-96B3-9918E37E3862.html">IEEE 802.1Qav Demo Step 2: Build Software</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> 5 minutes 
+            </td>
+</tr>
+<tr><td class="cellrowborder" colspan="2" valign="top" headers="d5612e54 d5612e56 "><a href="GUID-872A4245-48FA-4CBB-B6BB-B7A9D2FD6B06.html">IEEE 802.1Qav Step 3: Pick the Scenario to Run</a></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-A11461C1-8E25-4C4E-9D97-D156F24B55AC.html">IEEE 802.1Qav Demo 2 Scenario 1: No Qav</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> 60 minutes 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-68D25B59-1F8D-43C4-A3BD-64199EF61256.html">IEEE 802.1Qav Demo 2 Scenario 2: CBS Enabled</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> 60 minutes 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-0153557B-B0E3-4C3E-BC5B-4D7C1CDA2121.html">IEEE 802.1Qav Demo 2 Scenario 3: CBS and LaunchTime Enabled</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> 60 minutes 
+            </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-1D7AC947-6AC5-4E95-AC56-624B7803FC67.html">IEEE 802.1Qav Next Steps</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d5612e54 "><a href="GUID-5CE351F3-B150-45A2-9E9F-4F76DC77AD12.html">IEEE 802.1Qav Troubleshooting</a></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d5612e56 "> </td>
+</tr>
+<tr><td class="cellrowborder" colspan="2" valign="top" headers="d5612e54 d5612e56 "><div class="Note"><h3 class="NoteTipHead">Note</h3>  Time estimates can vary widely depending on your network speed and system processing power. The estimates listed above are based on using an Intel&reg; Core&#8482; i7 processor. 
+              </div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<div class="section" id="GUID-F714BE56-37F9-4914-8B35-908FAFADB543"><h2 class="sectiontitle"> IEEE 802.1Qav and IEEE 802.1Qat &amp; Overview of Credit Based Shaper (CBS)</h2><p>To enable bandwidth reservation for time sensitive traffic, IEEE 802.1Qav describes: 
+      </p>
+<ol id="GUID-E64AD7C0-DA33-4708-BC19-02ECF985CC3B"><li>Using VLAN tag encoded priority to map to bandwidth reserved streams 
+        </li>
+<li>A controlled bandwidth queue draining algorithm called Credit-Based Shaper (CBS). 
+        </li>
+</ol>
+<p>The Credit-Based Shaper (CBS) ensures that the bandwidth of time-sensitive traffic is protected in the midst of overloaded traffic on the same network. CBS is designed not to transmit a burst of time-sensitive traffic within a period of time that may interfere with other traffic patterns. 
+      </p>
+<p> In essence, CBS spaces out time-sensitive traffic as far as possible while ensuring the traffic bandwidth reserved for time-sensitive traffic is guaranteed. The behavior of CBS associated with a particular Stream Reserved (SR) traffic is illustrated below. Some points of consideration are: 
+      </p>
+<ul id="GUID-1CD0C203-2E9B-49D4-847D-315C9251910A"><li> Credit variation is bounded by high and low credit limits (hiCredit and loCredit). 
+        </li>
+<li>Credit increases at the rate of idle slope when the SR frame is available for transmission but is being held back due to the transmission of other non-SR frames. 
+        </li>
+<li>Credit decreases at the rate of send slope when the SR frame is transmitted. As long as credit ≥ 0, an SR frame is selected for transmission. 
+        </li>
+<li>In the Credit-Based Shaper figure below, the "SR frame 3" is spaced out from earlier SR frames because its credit is negative and "SR frame 3" is transmitted when credit=0. 
+        </li>
+<li> A positive credit is redrawn if there is no SR frame for transmission. 
+        </li>
+</ul>
+<p><div class="fignone" id="GUID-ADA608DA-47D8-4248-902D-9ACFCB65A1F6"><span class="figcap"> Credit Based Shaper (in IEEE 802.1Qav)</span><br/><img src="GUID-AC7E91DE-6500-4758-BAE6-E5C2E88E466D-low.png" width="1000"/><br/></div>
+</p>
+<p>IEEE 802.1Qat describes Stream Reservation Protocol (SRP) for registering and deregistering time sensitive AV stream and its associated traffic specifications (such as Class A or Class B). The functionality for SRP is provided by 
+        <samp class="codeph">mrpd</samp> software in OpenAvnu. 
+      </p>
+<p>Refer to 
+        <a href="GUID-6A82492B-2405-44C6-A2DA-D3246CE58F25.html">IEEE 802.1Qav and IEEE 802.1Qat</a> in this document for a detailed explanation of the standards. 
+      </p>
+</div>
+<div class="section" id="GUID-B54377FB-596A-4CD1-B167-A90E8182A916"><h2 class="sectiontitle">Intel&reg; Ethernet Controller I210 Linux Driver &amp; LaunchTime</h2><p>With respect to IEEE 802.1Qav, Intel&reg; Ethernet Controller I210 has a hardware implementation of the CBS functionality. 
+      </p>
+<p>In addition to CBS, Intel&reg; Ethernet Controller I210 pre-fetches Ethernet frames from system memory to transmission buffer inside the Ethernet MAC controller ahead of its specified transmission time. LaunchTime technology provides time-deterministic frame transmission. CBS traffic shaping functionality when coupled with this time-deterministic frame transmission (referred to as LaunchTime technology) capability will reduce jitter in frame transmission further. 
+      </p>
+<p>Refer to 
+        <a href="GUID-EE0C16E0-2BA3-41B5-8E75-515D89689211.html">Intel&reg; Ethernet Controller I210 Linux Driver Support for LaunchTime and IEEE 802.1Qav</a> in this document for a detailed explanation of the Linux kernel Ethernet driver. 
+      </p>
+</div>
+</div>
+<div/>
+</body>
+</html>

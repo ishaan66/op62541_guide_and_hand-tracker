@@ -1,0 +1,608 @@
+05/04/2019 11:12:45	
+05/04/2019 11:12:45	@-------- Start Batch Job ---------@
+05/04/2019 11:12:45	
+05/04/2019 11:12:45	Batch Log File: "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\farhelp_bat_log.txt"
+05/04/2019 11:12:45	
+05/04/2019 11:12:45	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+05/04/2019 11:12:45	>>Processing list of batches - "NavScriptFarhelp_bat.FarRun,default"
+05/04/2019 11:12:45	     > Read Batch list from "NavScriptFarhelp_bat.FarRun", section "[default]"
+05/04/2019 11:12:45	     "LoadHtmlFiles"
+05/04/2019 11:12:45	     "AddNavScript"
+05/04/2019 11:12:45	     "BuildSearch"
+05/04/2019 11:12:45	     "SearchFiles"
+05/04/2019 11:12:45	     "BuildHelp"
+05/04/2019 11:12:45	
+05/04/2019 11:12:45	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+05/04/2019 11:12:45	>>Processing Batch job - "LoadHtmlFiles"
+05/04/2019 11:12:45	     Set FileSpec(D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\*.htm*), recursive = Y
+05/04/2019 11:12:45	     Info: Files in file list = 65
+05/04/2019 11:12:45	     FindStart = "", Empty command param => find and replace not enabled
+05/04/2019 11:12:45	
+05/04/2019 11:12:45	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+05/04/2019 11:12:45	>>Processing Batch job - "AddNavScript"
+05/04/2019 11:12:45	     Info: ** No Files added! Using current file list ()...
+05/04/2019 11:12:45	     Info: Files in file list = 65
+05/04/2019 11:12:45	     Set FindStart = "<body"
+05/04/2019 11:12:45	     Set FindEnd = ">"
+05/04/2019 11:12:45	     Set Replace = "$A$
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="$R$[str:..\]NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink($R$[int:0]);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:45	     Set DosUnix = "N"
+05/04/2019 11:12:45	     Set IgnoreMultiSpace = "Y"
+05/04/2019 11:12:45	     Set IgnoreCase = "Y"
+05/04/2019 11:12:45	     Set IgnoreCRLF = "Y"
+05/04/2019 11:12:45	     Set FindFirstOnly = "N"
+05/04/2019 11:12:45	     Set MatchStartOnly = "N"
+05/04/2019 11:12:45	     Set $A$.FindSubStrNo = "1"
+05/04/2019 11:12:45	     Set $A$.ContainingText = ""
+05/04/2019 11:12:45	     Set $A$.NotContainingText = ""
+05/04/2019 11:12:45	     Set $A$.StartText = """
+05/04/2019 11:12:45	     Set $A$.EndText = """
+05/04/2019 11:12:45	     Set $A$.IncStartEndText = "N"
+05/04/2019 11:12:46	     Set $A$.StartDeleteThisText = ""
+05/04/2019 11:12:46	     Set $A$.EndDeleteThisText = ""
+05/04/2019 11:12:46	     Set $A$.ReplaceDelTextWith = ""
+05/04/2019 11:12:46	     Set $A$.DeleteTextMode = "0"
+05/04/2019 11:12:46	     Set $A$.UseOrig = "Y"
+05/04/2019 11:12:46	     >>Start find and replace
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-0153557B-B0E3-4C3E-BC5B-4D7C1CDA2121">" with "<body class="no-rel-links" id="GUID-0153557B-B0E3-4C3E-BC5B-4D7C1CDA2121">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-0153557B-B0E3-4C3E-BC5B-4D7C1CDA2121.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-02C77EC2-4F0B-4657-A508-794A89768EB0">" with "<body class="no-rel-links" id="GUID-02C77EC2-4F0B-4657-A508-794A89768EB0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-02C77EC2-4F0B-4657-A508-794A89768EB0.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57">" with "<body class="no-rel-links" id="GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-0362F9E4-CF9C-4C18-AC26-D461C470CE57.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 21: Replaced: "<body id="GUID-1052775F-A4A6-4E3D-A4F3-66F9A420FCE1">" with "<body id="GUID-1052775F-A4A6-4E3D-A4F3-66F9A420FCE1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-1052775F-A4A6-4E3D-A4F3-66F9A420FCE1.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 21: Replaced: "<body class="no-rel-links" id="GUID-1D7AC947-6AC5-4E95-AC56-624B7803FC67">" with "<body class="no-rel-links" id="GUID-1D7AC947-6AC5-4E95-AC56-624B7803FC67">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-1D7AC947-6AC5-4E95-AC56-624B7803FC67.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body id="GUID-1F70187B-7C6E-4E84-92B4-2B9B096CADC7">" with "<body id="GUID-1F70187B-7C6E-4E84-92B4-2B9B096CADC7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-1F70187B-7C6E-4E84-92B4-2B9B096CADC7.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-27BF71DB-134F-486E-B185-5CC2A7FAD7DE">" with "<body class="no-rel-links" id="GUID-27BF71DB-134F-486E-B185-5CC2A7FAD7DE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-27BF71DB-134F-486E-B185-5CC2A7FAD7DE.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 23: Replaced: "<body class="no-rel-links" id="GUID-28517243-1E21-440F-A920-62AE084ACA89">" with "<body class="no-rel-links" id="GUID-28517243-1E21-440F-A920-62AE084ACA89">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-28517243-1E21-440F-A920-62AE084ACA89.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 20: Replaced: "<body class="no-rel-links" id="GUID-32F76F7A-11E0-4202-891B-4D038FA44975">" with "<body class="no-rel-links" id="GUID-32F76F7A-11E0-4202-891B-4D038FA44975">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-32F76F7A-11E0-4202-891B-4D038FA44975.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body id="GUID-33C6D79A-B310-4549-9E09-A74373223572">" with "<body id="GUID-33C6D79A-B310-4549-9E09-A74373223572">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-33C6D79A-B310-4549-9E09-A74373223572.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 21: Replaced: "<body class="no-rel-links" id="GUID-33F4D69D-7B19-4639-ABF4-09E74F3DEE83">" with "<body class="no-rel-links" id="GUID-33F4D69D-7B19-4639-ABF4-09E74F3DEE83">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-33F4D69D-7B19-4639-ABF4-09E74F3DEE83.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-354B3B21-08D3-4437-9A46-779268874F63">" with "<body class="no-rel-links" id="GUID-354B3B21-08D3-4437-9A46-779268874F63">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-354B3B21-08D3-4437-9A46-779268874F63.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body id="GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079">" with "<body id="GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-39D9D808-5C71-4727-B3C6-B0D7A9B5D079.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-39E61605-A4B3-433E-A8BF-94C31B85E0F7">" with "<body class="no-rel-links" id="GUID-39E61605-A4B3-433E-A8BF-94C31B85E0F7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-39E61605-A4B3-433E-A8BF-94C31B85E0F7.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:46	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-3F9C762E-D716-4D7E-BA1C-A915E5A6BA61">" with "<body class="no-rel-links" id="GUID-3F9C762E-D716-4D7E-BA1C-A915E5A6BA61">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:46	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-3F9C762E-D716-4D7E-BA1C-A915E5A6BA61.html"
+05/04/2019 11:12:46	        ---
+05/04/2019 11:12:47	        >>Line# 17: Replaced: "<body id="GUID-4E7FBFA7-41DD-4906-857E-8600F22925CC">" with "<body id="GUID-4E7FBFA7-41DD-4906-857E-8600F22925CC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-4E7FBFA7-41DD-4906-857E-8600F22925CC.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-5608B646-5504-4CC4-A9DF-FE349E2515F0">" with "<body class="no-rel-links" id="GUID-5608B646-5504-4CC4-A9DF-FE349E2515F0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-5608B646-5504-4CC4-A9DF-FE349E2515F0.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-5667E9B8-9B36-49D3-8047-82102E74DB4C">" with "<body class="no-rel-links" id="GUID-5667E9B8-9B36-49D3-8047-82102E74DB4C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-5667E9B8-9B36-49D3-8047-82102E74DB4C.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-5B1C6ED6-1068-4632-82FA-BDEF0FCD7C3B">" with "<body class="no-rel-links" id="GUID-5B1C6ED6-1068-4632-82FA-BDEF0FCD7C3B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-5B1C6ED6-1068-4632-82FA-BDEF0FCD7C3B.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-5CE351F3-B150-45A2-9E9F-4F76DC77AD12">" with "<body class="no-rel-links" id="GUID-5CE351F3-B150-45A2-9E9F-4F76DC77AD12">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-5CE351F3-B150-45A2-9E9F-4F76DC77AD12.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A">" with "<body class="no-rel-links" id="GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-5D1448DA-935E-4988-8FE1-ED3D94BA986A.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-67569415-310B-4C8A-8120-FCB7A8A005E0">" with "<body class="no-rel-links" id="GUID-67569415-310B-4C8A-8120-FCB7A8A005E0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-67569415-310B-4C8A-8120-FCB7A8A005E0.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-68D25B59-1F8D-43C4-A3BD-64199EF61256">" with "<body class="no-rel-links" id="GUID-68D25B59-1F8D-43C4-A3BD-64199EF61256">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-68D25B59-1F8D-43C4-A3BD-64199EF61256.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-6A82492B-2405-44C6-A2DA-D3246CE58F25">" with "<body class="no-rel-links" id="GUID-6A82492B-2405-44C6-A2DA-D3246CE58F25">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-6A82492B-2405-44C6-A2DA-D3246CE58F25.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE">" with "<body class="no-rel-links" id="GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-6DF3678A-92BA-4E0C-A5E6-782D28451BEE.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-76107A9A-963F-4017-9796-59FBE9E74E14">" with "<body class="no-rel-links" id="GUID-76107A9A-963F-4017-9796-59FBE9E74E14">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-76107A9A-963F-4017-9796-59FBE9E74E14.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-79D33FC5-0B6E-4E84-AD91-6237BA1EBC3A">" with "<body class="no-rel-links" id="GUID-79D33FC5-0B6E-4E84-AD91-6237BA1EBC3A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-79D33FC5-0B6E-4E84-AD91-6237BA1EBC3A.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body id="GUID-7BD71011-1E21-4B35-8E6B-61837A3925E7">" with "<body id="GUID-7BD71011-1E21-4B35-8E6B-61837A3925E7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-7BD71011-1E21-4B35-8E6B-61837A3925E7.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-7FE51617-B22C-4651-B7FA-EDCE89BDD159">" with "<body class="no-rel-links" id="GUID-7FE51617-B22C-4651-B7FA-EDCE89BDD159">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-7FE51617-B22C-4651-B7FA-EDCE89BDD159.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 17: Replaced: "<body id="GUID-8494341A-8608-4E33-BF6D-446B1AD26451">" with "<body id="GUID-8494341A-8608-4E33-BF6D-446B1AD26451">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-8494341A-8608-4E33-BF6D-446B1AD26451.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 21: Replaced: "<body class="no-rel-links" id="GUID-872A4245-48FA-4CBB-B6BB-B7A9D2FD6B06">" with "<body class="no-rel-links" id="GUID-872A4245-48FA-4CBB-B6BB-B7A9D2FD6B06">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-872A4245-48FA-4CBB-B6BB-B7A9D2FD6B06.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:47	        >>Line# 23: Replaced: "<body class="no-rel-links" id="GUID-8F333F31-BBF8-4595-AE33-A780E3318A9A">" with "<body class="no-rel-links" id="GUID-8F333F31-BBF8-4595-AE33-A780E3318A9A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:47	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-8F333F31-BBF8-4595-AE33-A780E3318A9A.html"
+05/04/2019 11:12:47	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-8F9E481F-151B-4CC8-A358-CD895E33644A">" with "<body class="no-rel-links" id="GUID-8F9E481F-151B-4CC8-A358-CD895E33644A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-8F9E481F-151B-4CC8-A358-CD895E33644A.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-92363A16-023C-4D39-97A4-99CEA360FBF2">" with "<body class="no-rel-links" id="GUID-92363A16-023C-4D39-97A4-99CEA360FBF2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-92363A16-023C-4D39-97A4-99CEA360FBF2.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-92B1A27C-F544-4748-815C-01AD856C2916">" with "<body class="no-rel-links" id="GUID-92B1A27C-F544-4748-815C-01AD856C2916">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-92B1A27C-F544-4748-815C-01AD856C2916.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-933B0CE0-FD8C-4CA8-ABDE-B20AF0E03465">" with "<body class="no-rel-links" id="GUID-933B0CE0-FD8C-4CA8-ABDE-B20AF0E03465">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-933B0CE0-FD8C-4CA8-ABDE-B20AF0E03465.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-94346748-C062-462E-8354-31EC73053154">" with "<body class="no-rel-links" id="GUID-94346748-C062-462E-8354-31EC73053154">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-94346748-C062-462E-8354-31EC73053154.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-9A94295D-6737-48B7-A7C5-481547F98292">" with "<body class="no-rel-links" id="GUID-9A94295D-6737-48B7-A7C5-481547F98292">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-9A94295D-6737-48B7-A7C5-481547F98292.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-A0C360C5-CBF0-487E-B9E0-87A1F3312B67">" with "<body class="no-rel-links" id="GUID-A0C360C5-CBF0-487E-B9E0-87A1F3312B67">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-A0C360C5-CBF0-487E-B9E0-87A1F3312B67.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-A11461C1-8E25-4C4E-9D97-D156F24B55AC">" with "<body class="no-rel-links" id="GUID-A11461C1-8E25-4C4E-9D97-D156F24B55AC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-A11461C1-8E25-4C4E-9D97-D156F24B55AC.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body id="GUID-A444B0B2-9083-4BAA-948C-1F992F532C46">" with "<body id="GUID-A444B0B2-9083-4BAA-948C-1F992F532C46">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-A444B0B2-9083-4BAA-948C-1F992F532C46.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-A5F50450-D74B-41BC-8023-9CFD043CDF15">" with "<body class="no-rel-links" id="GUID-A5F50450-D74B-41BC-8023-9CFD043CDF15">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-A5F50450-D74B-41BC-8023-9CFD043CDF15.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 20: Replaced: "<body class="no-rel-links" id="GUID-A88526BF-EAF5-44D3-8081-80823CBD9F54">" with "<body class="no-rel-links" id="GUID-A88526BF-EAF5-44D3-8081-80823CBD9F54">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-A88526BF-EAF5-44D3-8081-80823CBD9F54.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-AB448800-047F-4017-9E88-7014747CD3B1">" with "<body class="no-rel-links" id="GUID-AB448800-047F-4017-9E88-7014747CD3B1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-AB448800-047F-4017-9E88-7014747CD3B1.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-ADB20930-F8A4-45FE-B810-34BFD7B17B92">" with "<body class="no-rel-links" id="GUID-ADB20930-F8A4-45FE-B810-34BFD7B17B92">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-ADB20930-F8A4-45FE-B810-34BFD7B17B92.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 17: Replaced: "<body id="GUID-B569C419-7AE9-4079-B6B3-51A5AF557051">" with "<body id="GUID-B569C419-7AE9-4079-B6B3-51A5AF557051">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-B569C419-7AE9-4079-B6B3-51A5AF557051.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 21: Replaced: "<body class="no-rel-links" id="GUID-B5D44613-1655-41FE-9331-9CC08A5C1C6B">" with "<body class="no-rel-links" id="GUID-B5D44613-1655-41FE-9331-9CC08A5C1C6B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-B5D44613-1655-41FE-9331-9CC08A5C1C6B.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:48	        >>Line# 23: Replaced: "<body class="no-rel-links" id="GUID-BAB59FB4-CF3D-4B36-A4F4-AB40BB36B929">" with "<body class="no-rel-links" id="GUID-BAB59FB4-CF3D-4B36-A4F4-AB40BB36B929">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:48	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-BAB59FB4-CF3D-4B36-A4F4-AB40BB36B929.html"
+05/04/2019 11:12:48	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-BDEF102F-4D53-4DF8-A188-319B82B4F38B">" with "<body class="no-rel-links" id="GUID-BDEF102F-4D53-4DF8-A188-319B82B4F38B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-BDEF102F-4D53-4DF8-A188-319B82B4F38B.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-C2958F46-196B-4204-90BB-660C0302C045">" with "<body class="no-rel-links" id="GUID-C2958F46-196B-4204-90BB-660C0302C045">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-C2958F46-196B-4204-90BB-660C0302C045.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-C3B60DFC-59B4-44E5-8051-6FB8FF7ABB81">" with "<body class="no-rel-links" id="GUID-C3B60DFC-59B4-44E5-8051-6FB8FF7ABB81">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-C3B60DFC-59B4-44E5-8051-6FB8FF7ABB81.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 22: Replaced: "<body class="no-rel-links" id="GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6">" with "<body class="no-rel-links" id="GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-CD83EAE5-0186-46F2-8FC7-52110DF8A8D6.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 28: Replaced: "<body class="no-rel-links" id="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6">" with "<body class="no-rel-links" id="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 17: Replaced: "<body id="GUID-CE967E11-F4FD-44F9-B69E-692E0A1B20E0">" with "<body id="GUID-CE967E11-F4FD-44F9-B69E-692E0A1B20E0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-CE967E11-F4FD-44F9-B69E-692E0A1B20E0.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-D2885E8E-C6F5-4031-A24E-D953D7E201BA">" with "<body class="no-rel-links" id="GUID-D2885E8E-C6F5-4031-A24E-D953D7E201BA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-D2885E8E-C6F5-4031-A24E-D953D7E201BA.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-D3D64F21-BA42-448A-95AA-1696719D16ED">" with "<body class="no-rel-links" id="GUID-D3D64F21-BA42-448A-95AA-1696719D16ED">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-D3D64F21-BA42-448A-95AA-1696719D16ED.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-D825132A-0666-4975-98D3-BB1DE3AD93DE">" with "<body class="no-rel-links" id="GUID-D825132A-0666-4975-98D3-BB1DE3AD93DE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-D825132A-0666-4975-98D3-BB1DE3AD93DE.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-D8AB8963-6DF5-4780-A262-4104895F4D93">" with "<body class="no-rel-links" id="GUID-D8AB8963-6DF5-4780-A262-4104895F4D93">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-D8AB8963-6DF5-4780-A262-4104895F4D93.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 21: Replaced: "<body class="no-rel-links" id="GUID-E153055C-9DF8-4695-A1E8-89B409FB04D6">" with "<body class="no-rel-links" id="GUID-E153055C-9DF8-4695-A1E8-89B409FB04D6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-E153055C-9DF8-4695-A1E8-89B409FB04D6.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-E3181D13-8B47-46CE-96B3-9918E37E3862">" with "<body class="no-rel-links" id="GUID-E3181D13-8B47-46CE-96B3-9918E37E3862">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-E3181D13-8B47-46CE-96B3-9918E37E3862.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-EE0C16E0-2BA3-41B5-8E75-515D89689211">" with "<body class="no-rel-links" id="GUID-EE0C16E0-2BA3-41B5-8E75-515D89689211">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-EE0C16E0-2BA3-41B5-8E75-515D89689211.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-F194B5B3-161B-490B-91FC-A6B9613D9B0D">" with "<body class="no-rel-links" id="GUID-F194B5B3-161B-490B-91FC-A6B9613D9B0D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-F194B5B3-161B-490B-91FC-A6B9613D9B0D.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-F44118B5-4E5E-482D-82F7-D3006EC98B6C">" with "<body class="no-rel-links" id="GUID-F44118B5-4E5E-482D-82F7-D3006EC98B6C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-F44118B5-4E5E-482D-82F7-D3006EC98B6C.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:49	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-F523E9D4-4301-4F3E-B858-C9258ABD35C7">" with "<body class="no-rel-links" id="GUID-F523E9D4-4301-4F3E-B858-C9258ABD35C7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:49	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-F523E9D4-4301-4F3E-B858-C9258ABD35C7.html"
+05/04/2019 11:12:49	        ---
+05/04/2019 11:12:50	        >>Line# 18: Replaced: "<body class="no-rel-links" id="GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658">" with "<body class="no-rel-links" id="GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+"
+05/04/2019 11:12:50	        Repl/Matches: 1/1, "D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-FE08D7E1-CB32-4363-A1FC-91F6AE0B6658.html"
+05/04/2019 11:12:50	        ---
+05/04/2019 11:12:50	        Total Repl/Matches: 65/65
+05/04/2019 11:12:50	        Total Files Changed/Matched: 65/65
+05/04/2019 11:12:50	     >>End find and replace
+05/04/2019 11:12:50	
+05/04/2019 11:12:50	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+05/04/2019 11:12:50	>>Processing Batch job - "BuildSearch"
+05/04/2019 11:12:50	     Set Filter1-Skip Folders   = "(None)"
+05/04/2019 11:12:50	     Set Filter2-Skip Files     = "(None)"
+05/04/2019 11:12:50	     Set Filter3-Only Inc Files = "(None)"
+05/04/2019 11:12:50	     Set Dir(D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out), recursive = Y
+05/04/2019 11:12:50	     Info: Files in file list = 263
+05/04/2019 11:12:50	     FindStart = "", Empty command param => find and replace not enabled
+05/04/2019 11:12:50	     >>Start BuildSearchData
+05/04/2019 11:12:50	      > - JSSearch_Filename: searchdata.js
+05/04/2019 11:12:50	      > - JSSearch_IgnoreLen: 0
+05/04/2019 11:12:50	      > - JSSearch_BreakCJK: N
+05/04/2019 11:12:50	      > - JSSearch_IgnoreNumsOnly: N
+05/04/2019 11:12:50	      > - JSSearch_JSSearch_ExtraChars: (+./)
+05/04/2019 11:12:50	      > - JSSearch_StopWordFileList: 
+05/04/2019 11:12:50	      > - JSSearch_CodePage: -1
+05/04/2019 11:12:53	        *** Error: Error Reading D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\GUID-19E935C5-2F8A-4E37-9E01-49EB5913B8B9.ditamap_ssgidfarhtml.log. File in use or memory allocate error?
+05/04/2019 11:12:59	        Build JS Search: Finished. Time to complete: 9.50secs. Output file saved: D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out\searchdata.js
+05/04/2019 11:12:59	     >>End BuildSearchData
+05/04/2019 11:12:59	
+05/04/2019 11:12:59	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+05/04/2019 11:12:59	>>Processing Batch job - "SearchFiles"
+05/04/2019 11:12:59	     Info: ** No Files added! Using current file list ()...
+05/04/2019 11:12:59	     Info: Files in file list = 263
+05/04/2019 11:12:59	     FindStart = "", Empty command param => find and replace not enabled
+05/04/2019 11:12:59	
+05/04/2019 11:12:59	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+05/04/2019 11:12:59	>>Processing Batch job - "BuildHelp"
+05/04/2019 11:12:59	     Info: ** No Files added! Using current file list ()...
+05/04/2019 11:12:59	     Info: Files in file list = 263
+05/04/2019 11:12:59	     >>Start MakeUncompHelp
+05/04/2019 11:12:59	      > - Base Folder: D:\Data\InfoShare\Data\PublishingService\Data\DataExports\GUID-AFA326E9-F093-4223-91A6-8F3A59CB5CC2.3909255.20190405111049066\2\en-US\out
+05/04/2019 11:12:59	      > - MakeUncompHelp_Section: tsn
+05/04/2019 11:13:01	     >>End MakeUncompHelp

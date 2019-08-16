@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="Time Synchronization Demo 1 Step 3: Measure Time Synchronization Quality"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-8F333F31-BBF8-4595-AE33-A780E3318A9A.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-C2958F46-196B-4204-90BB-660C0302C045"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Time Synchronization Demo 1 Step 3: Measure Time Synchronization Quality</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-C2958F46-196B-4204-90BB-660C0302C045">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Time Synchronization Demo 1 Step 3: Measure Time Synchronization Quality</h1>
+<div><div class="Note"><h3 class="NoteTipHead">Note</h3> Refer to 
+      <a href="GUID-AB448800-047F-4017-9E88-7014747CD3B1.html">Time Synchronization Demo: Measure Time Synchronization Quality (No Scripts)</a> to complete this step manually, instead of using scripts. 
+    </div>
+<p> Refer to 
+      <a href="GUID-02C77EC2-4F0B-4657-A508-794A89768EB0.html#GUID-AA1792BA-7E51-4B53-B432-EA843378F066">Demo 1: IEEE 802.1AS Time Synchronization</a> for a detailed description of the software components of the boards used. 
+    </p>
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3> <ul id="GUID-3EA8F7EB-086F-439F-AB59-A439B1FE7A4D"><li> This section uses 
+            <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> as the Ethernet controller device interface name associated with Intel&reg; Ethernet Controller I210. The Ethernet device name may vary from board to board. Use 
+            <samp class="codeph">ifconfig</samp> or 
+            <samp class="codeph">ip addr</samp> to display the list of Ethernet devices on your board. 
+          </li>
+<li>For clarity, assign a name to each terminal on XFCE. Refer to 
+            <a href="GUID-39E61605-A4B3-433E-A8BF-94C31B85E0F7.html">Name a Terminal in XFCE</a>. This demo lists the names of the terminals above each command. 
+          </li>
+</ul>
+</div>
+</p>
+<p>Follow these steps to establish time synchronization quality measurement using sample-app-1: 
+    </p>
+<ol id="GUID-BCA2513F-2864-480D-AB03-602D8CA65E1F"><li> Decide which board is to be the master and the slave. In this demo, we are using 
+        <strong>Board A as master</strong> and 
+        <strong>Board B as slave</strong>. 
+        <p/>
+</li>
+<li><p>Start 
+          <samp class="codeph">daemon_cl</samp> with a script on Board A. Use a terminal named Synchronization Terminal. 
+        </p>
+<p><strong>[Board A] Synchronization Terminal</strong></p>
+<p>The first command makes the script executable. 
+          <pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/scripts
+$ chmod a+x setup_sync.sh
+$ ./setup_sync.sh -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -b boardA -d
+
+</pre></p>
+Where 
+        
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CFBB41BB-DAE1-4CDB-944B-2EBC5B7657E2" class="DCD6D7" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" id="d37578e82"> Argument 
+                </th>
+<th class="cellrowborder" valign="top" id="d37578e84"> Description 
+                </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" headers="d37578e82 "><samp class="codeph">-i 
+                    <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span></samp></td>
+<td class="cellrowborder" valign="top" headers="d37578e84 "> Specify to use interface 
+                  <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d37578e82 "> -<samp class="codeph">b boardA 
+                  </samp></td>
+<td class="cellrowborder" valign="top" headers="d37578e84 "> Specify that the script is running on Board A 
+                </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" headers="d37578e82 "><samp class="codeph">-d 
+                  </samp></td>
+<td class="cellrowborder" valign="top" headers="d37578e84 "> Run synchronization via 
+                  <samp class="codeph">daemon_cl 
+                  </samp></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><samp class="codeph"> daemon_cl</samp> will be started immediately. 
+        </p>
+<p><br/><img src="GUID-1B5F691A-7A41-4C24-BDC9-627DA1F58BF5-low.png" width="630"/><br/></p>
+</li>
+<li><p>Start 
+          <samp class="codeph">daemon_cl</samp> with a script on Board B. Use a terminal named Synchronization Terminal. 
+        </p>
+<p><strong>[Board B] Synchronization Terminal</strong></p>
+<p>The first command makes the script executable. Run the following command: 
+          <pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/scripts
+$ chmod a+x setup_sync.sh
+$ ./setup_sync.sh -i <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span> -b boardB -d
+
+</pre> Where 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B66DA697-DF54-4997-A59F-D3FC4A9949BA" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="1" id="d37578e148"> Argument 
+                  </th>
+<th class="cellrowborder" valign="top" width="79.67479674796748%" id="d37578e150"> Description 
+                  </th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="1" headers="d37578e148 "><samp class="codeph">-i 
+                      <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span></samp></td>
+<td class="cellrowborder" valign="top" width="79.67479674796748%" headers="d37578e150 "> Specify to use interface 
+                    <span class="color(#FF0000)" style="color:#FF0000"><samp class="codeph">enp1s0</samp></span></td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="1" headers="d37578e148 "><samp class="codeph">-b boardB 
+                    </samp></td>
+<td class="cellrowborder" valign="top" width="79.67479674796748%" headers="d37578e150 "> Specify that the script is running on Board B 
+                  </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="1" headers="d37578e148 "><samp class="codeph">-d 
+                    </samp></td>
+<td class="cellrowborder" valign="top" width="79.67479674796748%" headers="d37578e150 "> Run synchronization via 
+                    <samp class="codeph">daemon_cl 
+                    </samp></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p> daemon_cl will be started immediately. 
+          <div class="fignone" id="GUID-356BEACC-AB92-4F31-AC4A-C4F1F56B66DA"><br/><img src="GUID-C7563D4F-80BE-4DB6-9B70-3B5A9FA30AD6-low.png" width="630"/><br/></div>
+</p>
+</li>
+<li><strong>[Board A]</strong> Open a new terminal called Sample-app-1. Start sample-app-1 from the directory in which it was made by changing to the directory 
+        <samp class="codeph">sample-app-1</samp>. 
+        <p><strong>[Board A] Sample-app-1 Terminal</strong></p>
+<pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-1/
+$ ./sample-app-1 &amp;
+
+</pre><p><br/><img src="GUID-99A61097-BE59-41FD-B1A2-A96CBD241323-low.png" width="630"/><br/></p>
+</li>
+<li><strong>[Board B]</strong> Open a new terminal called Sample-app-1. Start sample-app-1 from the directory in which it was made by changing to the directory 
+        <samp class="codeph">sample-app-1</samp>. 
+        <p><strong>[Board B] Sample-app-1 Terminal</strong></p>
+<pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-1/
+$ ./sample-app-1 &amp;
+
+</pre><p><br/><img src="GUID-96047F37-1285-4D29-AE4F-F70F3033CA0C-low.png" width="630"/><br/></p>
+</li>
+<li><strong>[Board B]</strong> Obtain the IP address for the Ethernet controller on Board B to be used for next step. 
+        <p><strong>[Board B] Any Terminal</strong></p>
+<pre>
+
+$ ifconfig
+OR
+$ ip addr&amp;
+
+</pre></li>
+<li><strong>[Board A]</strong> Open a new terminal called Opc-ua. Change to the directory 
+        <samp class="codeph">sample-app-1</samp>. 
+        <p/>
+<p><strong>[Board A] Opc-ua Terminal</strong></p>
+<pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-1/
+
+</pre></li>
+<li><strong>[Board A]</strong> Start the OPC UA client for PTP time stamp aggregation. The OPC UA client captures the timestamps of incoming PTP packets to the timestamps.txt output file. 
+        <p/>
+<p> For details about the OPC UA client, refer to the software components run on Board A in 
+          <a href="GUID-02C77EC2-4F0B-4657-A508-794A89768EB0.html#GUID-AA1792BA-7E51-4B53-B432-EA843378F066">Demo 1: IEEE 802.1AS Time Synchronization</a>. 
+        </p>
+<p><strong>[Board A] Opc-ua Terminal</strong></p>
+<p><pre class="color(#FF0000)">
+
+$ ./opc-ua-simple-client opc.tcp://localhost:4840 opc.tcp://<span class="color(#FF0000)" style="color:#FF0000">&lt;Board_B_IP_Address&gt;</span>:4840 -l timestamps.txt &amp;
+
+</pre></p>
+<p><br/><img src="GUID-2A3D6FC1-E52C-4DE6-AFC9-2274965306B8-low.png" width="830"/><br/></p>
+<p>Once run, sample-app-1 generates output as shown. 
+          <br/><img src="GUID-67F7EF94-9D11-4BBB-8447-CD36C373003E-low.png" width="830"/><br/></p>
+</li>
+<li><p><strong>[Board A]</strong> On a new terminal named Plot Terminal, change the directory to sample-app-1. 
+        </p>
+<p><strong>[Board A] Plot Terminal</strong><pre>
+
+$ cd /<span><samp class="codeph">opt/intel/iotg_tsn_ref_sw</samp></span>/sample-app-1/
+
+</pre></p>
+</li>
+<li><strong>[Board A]</strong> Browse to the location of the 
+        <samp class="codeph">timestamps.txt</samp> file and plot the graphs from the timestamp log file. 
+        <p><strong>[Board A] Plot Terminal</strong></p>
+<pre>
+
+$ chmod a+x ruby_plot.sh
+$ FILE=timestamps.txt ./ruby_plot.sh
+
+</pre></li>
+</ol>
+<p>Next: 
+      <a href="GUID-27BF71DB-134F-486E-B185-5CC2A7FAD7DE.html">Time Synchronization Demo 1 Step 4: Verify Time Synchronization Quality</a></p>
+</div>
+<div/>
+</body>
+</html>

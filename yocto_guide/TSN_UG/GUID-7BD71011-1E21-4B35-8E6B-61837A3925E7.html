@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="topic"/>
+<meta name="DC.Title" content="Preempt RT"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-7BD71011-1E21-4B35-8E6B-61837A3925E7"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Preempt RT</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body id="GUID-7BD71011-1E21-4B35-8E6B-61837A3925E7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Preempt RT</h1>
+<div><p> This section covers: 
+    </p>
+<ul id="GUID-FB523AFB-35C2-4EBE-AC2C-6A086A0013AF"><li><a href="#GUID-2F8DCDEB-697B-42DA-9019-82C224FC459D">Real-Time Linux Development Repositories</a></li>
+<li><a href="#GUID-DAFC226C-1FF1-49D8-960E-B2E390E86CF4">Building the Real-Time Linux Kernel</a></li>
+<li><a href="#GUID-5F8DDF32-7DC9-4092-96D4-F53862440FDA">Kernel Preemption</a></li>
+<li><a href="#GUID-91268490-7FC1-4CE8-B5BB-2B2F550F6B4B">Process Scheduling Policy</a></li>
+<li><a href="#GUID-CD60BEA9-852C-4AB1-A555-E507980E056C">Memory Locking in Real-Time Task</a></li>
+<li><a href="#GUID-6F2A4C94-A60C-43CF-9148-921307610EF7">Real-Time System Latency</a></li>
+</ul>
+<p>In a general purpose operating system (GPOS), round-robin (RR) time-sharing process scheduling allows each process to use the processor for a short period of processing time, known as a time slice or quantum. The RR time-sharing scheduling policy ensures fairness in processor bandwidth usage for all processes, and from the end user perspective, all processes appear to be equally responsive. The Linux kernel meets the need of general purpose usages in personal computers, mobile devices, and data centers by using RR time-sharing process scheduling. 
+    </p>
+<div class="section" id="GUID-2F8DCDEB-697B-42DA-9019-82C224FC459D"><h2 class="sectiontitle">Real-Time Linux Development Repositories </h2><p> The real-time (also known as PREEMPT_RT) patch for making Linux into a true real-time operating system (RTOS) was introduced in 2004, and since then multiple attempts have been made to fully integrate PREEMPT_RT patch into Linux mainline. The development of PREEMPT_RT patch happens outside of the Linux mainline. Below is a list of git repositories for real-time Linux: 
+      </p>
+<ul id="GUID-F043FE14-A2A5-4454-848B-EE4BB5261F99"><li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-rt-devel.git/" target="_blank"> https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-rt-devel.git/</a> for tracking active Linux mainline development 
+        </li>
+<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git/" target="_blank"> https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git/</a> for storing real-time patches for the stable and long-term Linux kernel 
+        </li>
+</ul>
+<p> Based on a recent talk entitled 
+        <a href="https://schd.ws/hosted_files/osseu18/c8/elc-eu-2018-rt-what-does-it-mean_Steven%20Rostedt.pdf" target="_blank">"Real-Time is coming to Linux"</a> in the 2018 Embedded Linux Conference Europe, the industry is expecting the PREEMPT_RT patch to be fully integrated into the Linux mainline in 2019. 
+      </p>
+<p/>
+<p> Intel's Production Kernel release at 
+        <a href="https://github.com/intel/linux-intel-lts" target="_blank">https://github.com/intel/linux-intel-lts</a> contains multiple kernel branches that closely track the long-term branch of Linux (by 
+        <a href="www.kernel.org" target="_blank">www.kernel.org</a>) and includes the kernel branch containing the PREEMPT_RT patch. For example, git branch "4.14/preempt-rt" is the kernel branch that contains patches from 
+      </p>
+<p><ol id="GUID-444AD658-C3DD-459E-987D-8CAA1549EDDA"><li>The Linux long term v4.14.y project 
+        </li>
+<li>The PREEMPT_RT patch for Linux v4.14 from "linux-stable-rt" git 
+        </li>
+<li> More kernel patches maintained by Intel for enabling Intel platforms 
+        </li>
+</ol>
+</p>
+</div>
+<div class="section" id="GUID-DAFC226C-1FF1-49D8-960E-B2E390E86CF4"><h2 class="sectiontitle">Building the Real-Time Linux Kernel</h2><p> To change the Linux kernel from GPOS to RTOS, enable "CONFIG_PREEMPT_RT_FULL" in the Linux configuration menu before building the kernel. The configuration selects Fully Preemptible Kernel (RT) as the preemption model used in the Linux kernel. For more information, read about 
+        <a href="https://wiki.linuxfoundation.org/realtime/documentation/technical_basics/preemption_models" target="_blank">other preemption models</a>. 
+      </p>
+<p> Unless users want to measure system latencies, all kernel debug and tracing configurations should be disabled. The common debug-related kernel configurations that interfere with the determinism of real-time Linux are: 
+      </p>
+<ul id="GUID-E4BCF400-87EC-473B-941C-788FDB3F4940"><li>DEBUG_PREEMPT 
+        </li>
+<li>DEBUG_OBJECTS 
+        </li>
+<li>DEBUG_SPINLOCK 
+        </li>
+<li>DEBUG_LOCK_ALLOC 
+        </li>
+<li>DEBUG_MUTEXES 
+        </li>
+<li>DEBUG_RT_MUTEXES 
+        </li>
+<li>DEBUG_STACKOVERFLOW 
+        </li>
+</ul>
+<p>Disable all tracers under Linux configuration menu at "Kernel hacking -&gt; Tracers -&gt; Kernel Function Tracer". 
+      </p>
+</div>
+<div class="section" id="GUID-5F8DDF32-7DC9-4092-96D4-F53862440FDA"><h2 class="sectiontitle">Kernel Preemption </h2><p> In non-preemptive kernels, the kernel code runs until completion and the kernel scheduler is not allowed to interrupt kernel code execution before the completion. 
+      </p>
+<p> The Linux kernel since version 2.6 is a preemptive kernel. This means the kernel scheduler can preempt a process at any point, as long as the kernel is in a state that is safe to reschedule, such as, when the kernel is not holding a lock to a critical section. A lock is also used by the Linux kernel to mark a particular region of kernel code that is non-preemptive. To make the Linux kernel real-time, many of the PREEMPT_RT patches are related to increase the section of kernel code that is preemptive. For additional details, read more about 
+        <a href="https://wiki.linuxfoundation.org/realtime/documentation/technical_details/start%20" target="_blank">PREEMPT_RT Changes</a>. 
+      </p>
+</div>
+<div class="section" id="GUID-91268490-7FC1-4CE8-B5BB-2B2F550F6B4B"><h2 class="sectiontitle"> Process Scheduling Policy </h2><p> Each thread managed by the kernel has its own choice of scheduling policy and scheduling priority. The kernel scheduler decides which runnable thread will be scheduled based on the knowledge of scheduling policy and scheduling priority. The scheduling policies are categorized into normal and real-time. 
+      </p>
+<p> The normal scheduling policies are: 
+      </p>
+<ul id="GUID-A39A45B3-2BD3-4B5B-B1CB-710CC92F43FB"><li> SCHED_OTHER 
+        </li>
+<li>SCHED_IDLE 
+        </li>
+<li>SCHED_BATCH 
+        </li>
+</ul>
+<p> The real-time scheduling policies are: 
+      </p>
+<ul id="GUID-F88D74B9-035A-4AEB-B3DE-D3B7A9A734D1"><li> SCHED_FIFO 
+        </li>
+<li>SCHED_RR 
+        </li>
+<li>SCHED_DEADLINE (since Linux v3.14) 
+        </li>
+</ul>
+<p> For a normal thread, we typically use the SCHED_OTHER policy and set the 
+        <em>nice</em> value (range from -20 to 19) of the process. A process with a high nice value allows the kernel scheduler to preempt it before the end of its process execution time-slice for other process, that is, being nice to other process. Within the kernel, the nice value is mapped into the static priority of the process at the location that is after the highest value of static priority for real-time scheduling policy. A real-time thread always has a higher static priority than a normal thread. 
+      </p>
+<p> For a real-time thread, we may choose either SCHED_FIFO or SCHED_RR and set the scheduling priority value. A SCHED_FIFO thread, once scheduled, continues to run until it blocks or explicitly reschedules itself. It does not have an execution time-slice and may run forever. SCHED_RR is similar to SCHED_FIFO, except that it has a time-slice value. Both SCHED_FIFO and SCHED_RR are listed in the POSIX.1 standard and can be configured by using a pthread API such as 
+        <samp class="codeph">pthread_setschedparam()</samp> . 
+      </p>
+<p> SCHED_DEADLINE is a newer real-time scheduling policy supported by the Linux kernel that is not part of the POSIX.1 standard, and is therefore not supported by pthread API. To use the SCHED_DEADLINE policy, use the Linux-specific 
+        <samp class="codeph">sched_setattr()</samp>API. The SCHED_DEADLINE policy is suitable for a real-time sporadic task that executes just once per period of time (that is, per cycle time) and has a specific limit on the duration the sporadic task may use to complete its execution, that is the deadline. 
+      </p>
+<p> Since Linux version 2.6.3, the default kernel scheduler for normal scheduling policy has been Completely Fair Scheduler (kernel/sched/fair.c). For real-time scheduling policy, it is the real-time kernel scheduler (kernel/sched/rt.c). The kernel scheduler always schedules the thread that has the highest static priority from the list of runnable threads that the kernel scheduler maintains. The static priority of a normal scheduling policy is lower than that of a real-time scheduling policy. The static priority of SCHED_DEADLINE is higher than SCHED_FIFO and SCHED_RR. 
+      </p>
+<p>Read more about 
+        <a href="http://man7.org/linux/man-pages/man7/sched.7.html" target="_blank">real-time scheduling policy and Linux kernel scheduler behavior</a>. 
+      </p>
+</div>
+<div class="section" id="GUID-CD60BEA9-852C-4AB1-A555-E507980E056C"><h2 class="sectiontitle">Memory Locking in Real-Time Task </h2><p> Because memory starvation is an expensive event and introduces variable latencies into a real-time task, it is important to make sure that the memory/buffer space needed for real-time task is locked, that is, it is prefetched from memory into cache, and the free page for the memory usage is reserved for the real-time task. Read more about<a href="https://wiki.linuxfoundation.org/realtime/documentation/howto/applications/memory%20" target="_blank"> ensuring a real-time task is set up to avoid memory starvation or cache miss issues</a>. 
+      </p>
+</div>
+<div class="section" id="GUID-6F2A4C94-A60C-43CF-9148-921307610EF7"><h2 class="sectiontitle">Real-Time System Latency </h2><p> The time a processor takes to complete a task is known as the latency of the task. In the context of RTOS, we want to understand the maximum latency of the RT task when the RT system is under the worst possible scenario. The real-time Linux kernel focuses on ensuring determinism in completing an RT task within the specified time budget and the determinism in RT task computation is characterized by measuring the maximum or worst latency to complete the RT task. 
+      </p>
+<p> Cyclictest is popularly used to measure the determinism of the real-time Linux. It is bundled into the rt-tests suite available from 
+        <a href="https://git.kernel.org/pub/scm/linux/kernel/git/clrkwllms/rt-tests.git" target="_blank"> https://git.kernel.org/pub/scm/linux/kernel/git/clrkwllms/rt-tests.git</a>. Cyclictest has one non-real-time main thread (using the SCHED_OTHER process scheduling model) to activate many real-time priority multiple threads (using SCHED_FIFO process scheduling model). These real-time threads are activated at a defined interval by an expiring timer (cyclic alarm). Whenever a real-time thread wakes-up, it reports its current time to the master thread. 
+      </p>
+<p>The term 
+        <em>latency</em> in cyclictest refers to the duration of an RT thread's wake-up sequence, starting from interrupt to when the RT is activated by the kernel scheduler. In the context of real-time performance monitoring, we are want to know the maximum latency for such wake-up sequence for an RT system. In other words, cyclictest is measuring the determinism of real-time Linux kernel in the area of interrupt handling and process scheduling. Open Source Automation Development Lab (OSADL) runs cyclictest measurement on multiple hardware across different Linux kernel version and the results are published regularly in its QA farm. 
+      </p>
+<p>For additional information on Real-Time System Latency, refer to the following for: 
+      </p>
+<ul id="GUID-5633FBC3-835D-4804-8D3A-65E6ABAFD933"><li><a href="https://www.osadl.org/QA-Farm-Realtime.qa-farm-about.0.html" target="_blank">General information</a></li>
+<li><a href="https://www.osadl.org/Hardware-overview.qa-farm-hardware.0.html" target="_blank">A list of supported hardware</a></li>
+</ul>
+</div>
+<div class="section" id="GUID-BA2179EC-69C4-4EB1-A232-B6911E5F9A07"><h2 class="sectiontitle">Real-Time Linux Reference Guides</h2><p>The following guides provide reference material on real-time Linux: 
+      </p>
+<ul id="GUID-F5195E92-C391-4271-AAD8-3870A446D301"><li><a href="https://wiki.linuxfoundation.org/realtime/documentation/howto/applications/application_base" target="_blank">How to build a simple RT application</a></li>
+<li><a href="https://wiki.linuxfoundation.org/realtime/documentation/howto/applications/cpuidle" target="_blank">CPU idle power saving methods for real-time workloads</a></li>
+<li><a href="https://wiki.linuxfoundation.org/realtime/documentation/howto/debugging/smi-latency/start%20" target="_blank">Debugging SMI-related latencies</a></li>
+<li><a href="https://rt.wiki.kernel.org/index.php/Main_Page" target="_blank">Real-time Linux wiki (being migrated to Linux Foundation wiki)</a></li>
+</ul>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6.html">Learn More</a></div>
+</div>
+<div/>
+</body>
+</html>

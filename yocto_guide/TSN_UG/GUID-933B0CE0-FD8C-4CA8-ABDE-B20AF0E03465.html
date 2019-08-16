@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="Configure Wireshark"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-28517243-1E21-440F-A920-62AE084ACA89.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-933B0CE0-FD8C-4CA8-ABDE-B20AF0E03465"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>Configure Wireshark</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-933B0CE0-FD8C-4CA8-ABDE-B20AF0E03465">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">Configure Wireshark</h1>
+<div><p>You can use Wireshark*, a network protocol analyzer to analyze network traffic. Once you have run the IEEE 802.1Qav demo, you interpret and understand the results in the resulting .pcap file using Wireshark. 
+    </p>
+<ol id="GUID-8D9A6573-ECB8-4100-9A47-0AD3BB26F22C"><li>On the host machine, open the captured packets file (*.pcap) using Wireshark. 
+      </li>
+<li>Set the time display to "Seconds Since Previous Displayed Packet" as shown below. (View&gt; Time Display Format&gt; Seconds Since Previous Displayed Packet) 
+        <div class="fignone" id="GUID-0239BD71-B562-4749-B2FF-415ED199ACA8"><span class="figcap">Wireshark: Setting the Time Display Format</span><br/><img src="GUID-FD7C843C-CBE5-4576-824C-0FD83719E0D5-low.png" width="900"/><br/></div>
+<p/>
+</li>
+<li>Edit Column Preferences by right-clicking the Column Heading and then selecting 'Column Preferences' as shown below. 
+        <div class="fignone" id="GUID-58676D78-8FAE-4B03-A3C2-E1EDE9C34CF3"><span class="figcap">Wireshark: Editing Column Preferences</span><br/><img src="GUID-EB46B44A-1017-47AD-A6BB-7ACB263363E4-low.png" width="530"/><br/></div>
+<p/>
+</li>
+<li>In the Column Preferences window, update the Time column Type to Relative Time. This can be done by selecting the Time row, and double-clicking on the Type and select 'Relative time' from the drop-down menu. Additionally, click the + icon in the bottom left of the window to add the following new columns as shown below: 
+        <ul id="GUID-3B20DC8D-D333-4A8C-B6E1-819149B4C111"><li>Title: Inter 1722 Delta Time; Type: Time (format as specified) 
+          </li>
+<li>Title: Inter-frame Delta Time; Type: Delta time 
+          </li>
+</ul>
+<div class="fignone" id="GUID-7B6D2394-6409-4892-9CE8-3F9D66999C77"><span class="figcap">Wireshark: Adding New Columns</span><br/><img src="GUID-05826234-015E-4378-9122-E64A04511C3E-low.png" width="800"/><br/></div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>  Inter-frame Delta Time is the time difference between packets of different types, such as BE packets, IEEE1772 packets, and others. Inter 1722 Delta Time is the time difference between IEEE1722 packets only. 
+        </div>
+</li>
+<li>In the Statistics tab, select I/O Graph. 
+        <div class="fignone" id="GUID-3B6262F7-D8F0-4ECC-9EE5-C00A46769E12"><span class="figcap">Wireshark: I/O Graph Setting</span><br/><img src="GUID-F57F9DB4-80FD-41ED-A0BF-A7DE27AEBA15-low.png" width="530"/><br/></div>
+</li>
+<li>Add packet filters for ieee1722 by clicking the + icon on the bottom left of the generated graph. Double-click the Display Filter area in the new row, and enter "ieee1722." Then double-click the title for the new row and rename it to "TSN." 
+        <div class="Note"><h3 class="NoteTipHead">Note</h3> To change the color of the plot lines, double-click next to the color boxes in the Color column and select the color you want to use. 
+        </div>
+<div class="fignone" id="GUID-448FDE81-6E58-465A-84E1-D89261D25955"><span class="figcap">Add IEEE1722 and UDP Display Filters</span><br/><img src="GUID-97E88A6C-3A03-4B15-9DA0-7A7592BC93E7-low.png" width="1000"/><br/></div>
+</li>
+</ol>
+<p>Wireshark is now configured to run and analyze network traffic for each of the three IEEE 802.1Qav scenarios. 
+    </p>
+<p>You can now analyze network traffic for each of the scenarios: 
+    </p>
+<ul id="GUID-E0F739F6-FE64-45F0-BE34-FD46E715A530"><li><a href="GUID-A11461C1-8E25-4C4E-9D97-D156F24B55AC.html#GUID-5C52D94A-BDD2-4A4F-9F4E-20FB69647A65">Analyze Network Traffic: IEEE 802.1Qav Demo 2 Scenario 1: No Qav</a></li>
+<li><a href="GUID-68D25B59-1F8D-43C4-A3BD-64199EF61256.html#GUID-5C52D94A-BDD2-4A4F-9F4E-20FB69647A65">Analyze Network Traffic: IEEE 802.1Qav Demo 2 Scenario 2: CBS Enabled</a></li>
+<li><a href="GUID-0153557B-B0E3-4C3E-BC5B-4D7C1CDA2121.html#GUID-5C52D94A-BDD2-4A4F-9F4E-20FB69647A65">Analyze Network Traffic: IEEE 802.1Qav Demo 2 Scenario 3: CBS and LaunchTime Enabled</a></li>
+</ul>
+</div>
+<div/>
+</body>
+</html>

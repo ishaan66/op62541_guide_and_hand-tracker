@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0016)http://localhost -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="IEEE 802.1Qav and IEEE 802.1Qat"/>
+<meta name="DC.Relation" scheme="URI" content="GUID-CDAA86E6-EF38-4446-BA8B-D1512EAB8AE6.html"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="GUID-6A82492B-2405-44C6-A2DA-D3246CE58F25"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css"/>
+<title>IEEE 802.1Qav and IEEE 802.1Qat</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body class="no-rel-links" id="GUID-6A82492B-2405-44C6-A2DA-D3246CE58F25">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1">IEEE 802.1Qav and IEEE 802.1Qat</h1>
+<div><p>Internet applications such as audio/video streaming, VoIP telephony, and two-way video call use Real Time Protocol (RTP) that runs over User Datagram Protocol (UDP) on Internet Protocol (IP). The data streams of such applications carry huge contents and are sensitive to transmission latency. RTP streams contain time-stamps and a sequence number, which are used to manage stream transmission jitter, packet loss, and out-of-order. For in-vehicle infotainment or professional AV systems where the media source, speakers, and display units are located close by, Ethernet-based AVB technology is a better option than RTP because AVB uses IEEE 1722 AV Transport Protocol Layer 2 payload to carry multiple streams and has less header overhead, and no IP and UDP headers. Both AVTP and RTP media streams require low bounded latency and latency variation in the packet-switched network that means reserving transmission bandwidth for AV streams on the usually congested network. 
+    </p>
+<p>To enable bandwidth reservation for time-sensitive traffic such as AVB streams, IEEE 802.1Qav describes a method to (1) use VLAN tag encoded priority to map to bandwidth reserved streams and (2) controlled bandwidth queue draining algorithms called Credit-Based Shaper (CBS). 
+    </p>
+<p>IEEE 802.1Qat describes Stream Reservation Protocol (SRP) for registering and deregistering AV. IEEE 802.1Qat adds Multiple Stream Reservation Protocol (MSRP) on top of an existing network management protocol called the Multiple Registration Protocol (MRP). It is also worth mentioning that both Multiple VLAN Registration Protocol (MVRP) and Multiple MAC Registration Protocol (MMRP) use MRP. This is the capability provided by mrpd software in OpenAvnu. 
+    </p>
+<div class="section" id="GUID-497F7C7E-0F73-4B19-8D9E-E88687A878F1"><h2 class="sectiontitle"> Demo 2: IEEE 802.1Qav Credit Based Shaper</h2><div class="fignone" id="GUID-A93AC929-D3F3-46C5-BAE4-84F65E52E2B0"><span class="figcap"> Demo 2 Credit Based Shaper: Software Components</span></div>
+<p><br/><img src="GUID-2E0AB3C3-A229-4E27-8344-0E26F026916D-low.png" width="830"/><br/></p>
+<p><strong>Board A</strong> and 
+        <strong>Board B</strong> run common software components. They are: 
+      </p>
+<ul id="GUID-692A4EF9-0E27-46BB-B10B-5F0C0A623343"><li><samp class="codeph">daemon_cl</samp>: A user-space daemon that supports time synchronization based on IEEE 802.1AS Generalized Precision Time Protocol (gPTP). 
+          <ul id="GUID-C29605F6-DF36-43E0-95C4-EED8D3F2C901"><li>In 
+              <strong>Board A</strong>, 
+              <samp class="codeph">daemon_cl</samp> runs in grandmaster clock mode. 
+            </li>
+<li>In 
+              <strong>Board B</strong>, 
+              <samp class="codeph">daemon_cl</samp> runs in slave clock mode. 
+            </li>
+</ul>
+</li>
+<li><samp class="codeph">mrpd</samp>: A user-space daemon that listens to SRP client request and establishes stream reservation with compatible IEEE 802.1Qav AVB devices (switch or endpoint). Its objective is to discover all networked devices and establish the AVB domain for devices that are AVB-capable. 
+        </li>
+<li><samp class="codeph">iperf3</samp>: A user-space utility commonly used for performing network throughput benchmarking. We use the utility as a best effort traffic generator. The utility always works in pairs: 
+          <em>client mode in Board A</em> and 
+          <em>server mode in Board B</em>. 
+        </li>
+<li><samp class="codeph">igb</samp> driver: A Linux kernel Ethernet driver for the Intel Ethernet Controller I210 that supports (1) PTP clock, (2) CBS, and (3) LaunchTime technology. CBS and LaunchTime functionalities are related to frame transmission, therefore these functionalities are used in 
+          <strong>Board A</strong>, which acts as the source of IEEE 1722 Class A traffic. 
+        </li>
+</ul>
+<p>The software components that run on 
+        <strong>Board A</strong> only are: 
+      </p>
+<ul id="GUID-E3979BF3-0EFF-4864-B34B-80BAD14CB07E"><li><samp class="codeph">simple-talker-cmsg</samp>: 
+          <ul id="GUID-6012EA23-2AEF-48FE-BB4C-B2B28833FA95"><li>An IEEE 802.1Qav sample application that acts as IEEE 1722 Class A traffic source. 
+            </li>
+<li>The application acts as SRP client and registers itself as AVB sender with 
+              <samp class="codeph">mrpd</samp>. 
+            </li>
+<li>The application uses<samp class="codeph"> tc</samp> utility to set up 
+              <samp class="codeph">cbs</samp> and 
+              <samp class="codeph">etf</samp> qdisc capabilities in Linux networking stack. 
+            </li>
+<li>The application sets the transmission time of each IEEE 1722 payload in control message (cmsg) with 
+              <samp class="codeph">cmsg_type SO_TXTIME</samp>. 
+            </li>
+</ul>
+</li>
+<li><samp class="codeph">cbs</samp> and 
+          <samp class="codeph">etf</samp> qdisc: 
+          <ul id="GUID-14C0FA3D-3457-4EAF-8152-A1EB0F1F02BD"><li><samp class="codeph">cbs</samp> qdisc: the demo uses 
+              <samp class="codeph">cbs</samp> qdisc in hardware offload mode. The CBS parameters (idle slope, send slope, high credit, and low credit) are passed to the 
+              <samp class="codeph">igb</samp> driver directly. 
+            </li>
+<li>Refer to 
+              <a href="GUID-A5F50450-D74B-41BC-8023-9CFD043CDF15.html#GUID-A5F50450-D74B-41BC-8023-9CFD043CDF15">Queue Disciplines</a>. 
+            </li>
+</ul>
+</li>
+</ul>
+<p>The software components that run on 
+        <strong>Board B</strong> only are: 
+      </p>
+<ul id="GUID-91FF511C-6B69-4A45-9CC5-504EDFE04813"><li><samp class="codeph">simple_listener</samp>: 
+          <ul id="GUID-1B4D5502-CC90-4CF9-90CE-E75C25A9BD46"><li>A sample application (in OpenAvnu open source project - examples/simple_listener) that listens/receives IEEE 1722 traffic. 
+            </li>
+<li>The application acts as SRP client and registers itself as AVB listener with 
+              <samp class="codeph">mrpd</samp>. 
+            </li>
+<li>The application uses the libpcap API to receive IEEE 1722 traffic and stores the audio content into a file &lt;filename&gt;.wav by using the libsndfile API. 
+            </li>
+</ul>
+</li>
+<li><samp class="codeph">tcpdump</samp>: A user-space utility uses to capture all Ethernet frames received at Board B including IEEE 1722 traffic and stores them in pcap format in &lt;filename&gt;.pcap file. This pcap file is then opened with Wireshark to display the traffic pattern (IEEE 1722 Class A traffic and Best Effort traffic). 
+        </li>
+</ul>
+</div>
+</div>
+<div/>
+</body>
+</html>
