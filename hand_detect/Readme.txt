@@ -5,3 +5,4 @@ Steps to run hand tracker:
 4. Tracking will now start. Moving your hand left, right, up, or down will print the corresponding direction at the 
 top left corner of the screen. Closing your hand into a fist will also cause closed to be printed. Waving your hand
 from left to right repeatedly results in waving to be printed, but this detection is not very accurate.
+5. Press q to quit the program.
